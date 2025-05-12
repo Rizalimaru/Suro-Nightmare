@@ -9,9 +9,9 @@ public class dialogSystem : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
 
     [Header("Dialog")]
+    [SerializeField] private string[] nameLines;
     [TextArea(3, 5)]
     [SerializeField] private string[] dialogLines;
-    [SerializeField] private string[] nameLines;
 
     [Header("Typing Effect")]
     [SerializeField] private float typingSpeed = 0.03f;

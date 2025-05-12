@@ -109,7 +109,6 @@ MonoBehaviour:
   progressSlider: {fileID: 7061723407190640481}
   InteractionHint: {fileID: 1908020889009105383}
   smokeEffect: {fileID: 0}
-  linkedSpawner: {fileID: 0}
 --- !u!114 &7314285498734323830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +124,7 @@ MonoBehaviour:
   pocongPrefab: {fileID: 1736127313486710993, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
   spawnDistanceBehind: -2
   triggerDistance: 5
-  player: {fileID: 0}
+  player: {fileID: 6271868402769968, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
   spawnedPocong: {fileID: 0}
 --- !u!1 &1104440138414812343
 GameObject:
