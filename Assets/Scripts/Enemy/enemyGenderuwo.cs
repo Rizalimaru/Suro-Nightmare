@@ -25,7 +25,7 @@ public class enemyGenderuwo : MonoBehaviour
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        Debug.Log("Distance to Player: " + distanceToPlayer);
+        //Debug.Log("Distance to Player: " + distanceToPlayer);
 
         // Jika bersentuhan dengan pemain dan pemain tidak crouch, follow player
         if (isFollowingPlayer)
