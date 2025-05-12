@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4896338716941915678}
   m_Layer: 0
   m_Name: Pocong
-  m_TagString: Untagged
+  m_TagString: Pocong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b330d45fd8cdd4f8d4507952c66e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   moveSpeed: 2
   chaseRange: 10
 --- !u!50 &2441394176536707155

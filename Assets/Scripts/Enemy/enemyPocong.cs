@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class enemyPocong : MonoBehaviour
 {
-    [Header("Target")]
-    public Transform player;
-
     [Header("Movement Settings")]
     public float moveSpeed = 3f;
     public float chaseRange = 10f;
 
+    private Transform player;
     private Rigidbody2D rb;
     private Collider2D col;
 
@@ -19,13 +17,26 @@ public class enemyPocong : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        // Cari GameObject dengan tag "Player" di awal
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
     }
 
     void Update()
     {
+        // Jika player belum ditemukan (misal baru spawn), cari lagi
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
+        }
+
         if (isStunned || player == null)
         {
-            rb.velocity = Vector2.zero; // Diam jika stun
+            rb.velocity = Vector2.zero;
             return;
         }
 
@@ -60,14 +71,14 @@ public class enemyPocong : MonoBehaviour
         isStunned = true;
 
         if (col != null)
-            col.enabled = false; // Matikan collider agar bisa dilewati
+            col.enabled = false;
 
-        rb.velocity = Vector2.zero; // Hentikan gerakan
+        rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(duration);
 
         if (col != null)
-            col.enabled = true; // Aktifkan kembali collider
+            col.enabled = true;
 
         isStunned = false;
     }
