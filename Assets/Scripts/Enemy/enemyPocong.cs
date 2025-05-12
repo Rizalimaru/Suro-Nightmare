@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class enemyPocong : MonoBehaviour
 {
-   [Header("Target")]
+    [Header("Target")]
     public Transform player;
 
     [Header("Movement Settings")]
@@ -12,15 +11,23 @@ public class enemyPocong : MonoBehaviour
     public float chaseRange = 10f;
 
     private Rigidbody2D rb;
+    private Collider2D col;
+
+    private bool isStunned = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (isStunned || player == null)
+        {
+            rb.velocity = Vector2.zero; // Diam jika stun
+            return;
+        }
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -30,7 +37,7 @@ public class enemyPocong : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector2.zero; // Stop moving when out of range
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -40,7 +47,31 @@ public class enemyPocong : MonoBehaviour
         rb.velocity = direction * moveSpeed;
     }
 
-    // Optional: Visualize chase range in editor
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunRoutine(duration));
+        }
+    }
+
+    private IEnumerator StunRoutine(float duration)
+    {
+        isStunned = true;
+
+        if (col != null)
+            col.enabled = false; // Matikan collider agar bisa dilewati
+
+        rb.velocity = Vector2.zero; // Hentikan gerakan
+
+        yield return new WaitForSeconds(duration);
+
+        if (col != null)
+            col.enabled = true; // Aktifkan kembali collider
+
+        isStunned = false;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
