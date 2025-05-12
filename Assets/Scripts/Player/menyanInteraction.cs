@@ -9,10 +9,10 @@ public class menyanInteraction : MonoBehaviour
     public float interactRange = 2f;
 
     [Header("Interaction Settings")]
-    public KeyCode interactKey;
-    public float progressIncreaseSpeed;   // per detik saat F ditekan
-    public float progressDecreaseSpeed; // per detik saat F dilepas
-    public float requiredProgress;        // nilai total untuk mematikan menyan
+    public KeyCode interactKey = KeyCode.F;
+    public float progressIncreaseSpeed = 1f;   // per detik saat F ditekan
+    public float progressDecreaseSpeed = 1f;   // per detik saat F dilepas
+    public float requiredProgress = 3f;        // nilai total untuk mematikan menyan
 
     private float currentProgress = 0f;
     private bool isInRange = false;
@@ -26,10 +26,16 @@ public class menyanInteraction : MonoBehaviour
     [Header("Add On")]
     public GameObject smokeEffect;
     private progressObjektif Progress;
+    private spawnerPocong Pocong;
 
     void Start()
     {
+        // Ambil referensi script progress objektif
         Progress = FindObjectOfType<progressObjektif>();
+
+        // Ambil referensi script spawnerPocong yang satu GameObject dengan menyan
+        Pocong = GetComponent<spawnerPocong>();
+
         progressSlider.maxValue = requiredProgress;
         progressSlider.value = 0f;
         progressBarUI.SetActive(false);
@@ -55,7 +61,6 @@ public class menyanInteraction : MonoBehaviour
                 currentProgress -= progressDecreaseSpeed * Time.deltaTime;
             }
 
-            // Clamp nilai
             currentProgress = Mathf.Clamp(currentProgress, 0f, requiredProgress);
             progressSlider.value = currentProgress;
 
@@ -77,9 +82,19 @@ public class menyanInteraction : MonoBehaviour
         progressBarUI.SetActive(false);
         InteractionHint.SetActive(false);
         progressSlider.value = 0f;
-        if (smokeEffect) smokeEffect.SetActive(false);
-        Progress.AddProgress();
-        Debug.Log("Menyan berhasil dimatikan!");
+
+        if (smokeEffect != null)
+            smokeEffect.SetActive(false);
+
+        // Tambah progress objektif
+        if (Progress != null)
+            Progress.AddProgress();
+
+        // Hancurkan Pocong yang di-spawn oleh spawner ini
+        if (Pocong != null && Pocong.spawnedPocong != null)
+            Destroy(Pocong.spawnedPocong);
+
+        Debug.Log("Menyan berhasil dimatikan dan Pocong hilang!");
     }
 
     void OnDrawGizmosSelected()

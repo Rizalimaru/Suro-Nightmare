@@ -219,6 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed7b91da76ca33479bdb02bb969de4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  cam: {fileID: 0}
   target: {fileID: 1872371901}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: -1}
@@ -836,6 +838,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314285498734323830, guid: d459aa506b81638498242ec37b9b605f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1872371901}
     - target: {fileID: 8345017684923599466, guid: d459aa506b81638498242ec37b9b605f, type: 3}
       propertyPath: player
       value: 
@@ -845,6 +851,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d459aa506b81638498242ec37b9b605f, type: 3}
+--- !u!1 &1131373866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6271868402769968, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+  m_PrefabInstance: {fileID: 1417789519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1365547279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1079,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6271868402769968, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1872371906}
   m_SourcePrefab: {fileID: 100100000, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
 --- !u!1 &1510975676
 GameObject:
@@ -1277,6 +1291,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1075519706144362997, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
   m_PrefabInstance: {fileID: 1417789519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872371906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131373866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57282a4c280e3142a4f5736797447a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunKey: 113
+  stunRadius: 5
+  stunDuration: 3
 --- !u!1 &1892455546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1427,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314285498734323830, guid: d459aa506b81638498242ec37b9b605f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1872371901}
     - target: {fileID: 8345017684923599466, guid: d459aa506b81638498242ec37b9b605f, type: 3}
       propertyPath: player
       value: 
@@ -1553,13 +1586,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2408721177626109912, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1872371901}
+    - target: {fileID: 1736127313486710993, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
+      propertyPath: m_TagString
+      value: Pocong
+      objectReference: {fileID: 0}
     - target: {fileID: 6149557441967001333, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.7590597
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 6149557441967001333, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1658,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314285498734323830, guid: d459aa506b81638498242ec37b9b605f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1872371901}
     - target: {fileID: 8345017684923599466, guid: d459aa506b81638498242ec37b9b605f, type: 3}
       propertyPath: player
       value: 

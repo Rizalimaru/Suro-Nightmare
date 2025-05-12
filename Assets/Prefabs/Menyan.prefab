@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1504178135897448075}
   - component: {fileID: 548668715129588722}
   - component: {fileID: 8345017684923599466}
+  - component: {fileID: 7314285498734323830}
   m_Layer: 0
   m_Name: Menyan
   m_TagString: Menyan
@@ -108,6 +109,24 @@ MonoBehaviour:
   progressSlider: {fileID: 7061723407190640481}
   InteractionHint: {fileID: 1908020889009105383}
   smokeEffect: {fileID: 0}
+  linkedSpawner: {fileID: 0}
+--- !u!114 &7314285498734323830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468814900549022058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eadf62f1a8070489171f944e6dd2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pocongPrefab: {fileID: 1736127313486710993, guid: 855b909da6ecf974399e4974297bfcd9, type: 3}
+  spawnDistanceBehind: -2
+  triggerDistance: 5
+  player: {fileID: 0}
+  spawnedPocong: {fileID: 0}
 --- !u!1 &1104440138414812343
 GameObject:
   m_ObjectHideFlags: 0

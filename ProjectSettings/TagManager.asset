@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Ground
   - Menyan
-  - Kunti
+  - Pocong
   layers:
   - Default
   - TransparentFX
@@ -16,7 +16,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Environtment
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environtment
+    uniqueID: 1720683275
     locked: 0
