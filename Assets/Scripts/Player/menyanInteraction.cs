@@ -2,32 +2,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MenyanInteraction : MonoBehaviour
+public class menyanInteraction : MonoBehaviour
 {
     [Header("Player Detection")]
     public Transform player;
     public float interactRange = 2f;
 
     [Header("Interaction Settings")]
-    public KeyCode interactKey = KeyCode.F;
-    public float progressIncreaseSpeed = 1f;   // per detik saat F ditekan
-    public float progressDecreaseSpeed = 0.5f; // per detik saat F dilepas
-    public float requiredProgress = 3f;        // nilai total untuk mematikan menyan
+    public KeyCode interactKey;
+    public float progressIncreaseSpeed;   // per detik saat F ditekan
+    public float progressDecreaseSpeed; // per detik saat F dilepas
+    public float requiredProgress;        // nilai total untuk mematikan menyan
 
     private float currentProgress = 0f;
     private bool isInRange = false;
     private bool isMenyanOn = true;
 
-    [Header("UI (Slider)")]
+    [Header("UI")]
     public GameObject progressBarUI;
     public Slider progressSlider;
     public GameObject InteractionHint;
 
-    [Header("Menyan Visuals")]
+    [Header("Add On")]
     public GameObject smokeEffect;
+    private progressObjektif Progress;
 
     void Start()
     {
+        Progress = FindObjectOfType<progressObjektif>();
         progressSlider.maxValue = requiredProgress;
         progressSlider.value = 0f;
         progressBarUI.SetActive(false);
@@ -76,6 +78,7 @@ public class MenyanInteraction : MonoBehaviour
         InteractionHint.SetActive(false);
         progressSlider.value = 0f;
         if (smokeEffect) smokeEffect.SetActive(false);
+        Progress.AddProgress();
         Debug.Log("Menyan berhasil dimatikan!");
     }
 

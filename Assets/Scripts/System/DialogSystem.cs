@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DialogSystem : MonoBehaviour
+public class dialogSystem : MonoBehaviour
 {
     [Header("UI Komponen")]
     [SerializeField] private TMP_Text dialogText;
