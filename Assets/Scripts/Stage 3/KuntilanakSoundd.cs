@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class KuntilanakSound : MonoBehaviour
 {
@@ -8,10 +10,19 @@ public class KuntilanakSound : MonoBehaviour
     public float minPitch = 0.8f;
     public float maxPitch = 2.0f;
 
+    public Volume globalVolume; // Drag Global Volume di Inspector
+    private Vignette vignette; // Referensi ke efek vignette
+
+
     private SembunyiLemari sembunyiScript;
 
     void Start()
     {
+        if (globalVolume != null && globalVolume.profile != null)
+        {
+            globalVolume.profile.TryGet(out vignette);
+        }
+
         if (player != null)
         {
             sembunyiScript = player.GetComponentInChildren<SembunyiLemari>(); // kalau script sembunyi ada di anak
@@ -22,8 +33,7 @@ public class KuntilanakSound : MonoBehaviour
 
     void Update()
     {
-        if (player == null || heartbeatAudio == null) return;
-
+        if (player == null || heartbeatAudio == null || vignette == null) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -34,9 +44,17 @@ public class KuntilanakSound : MonoBehaviour
 
             float t = 1 - (distance / maxDistance);
             heartbeatAudio.pitch = Mathf.Lerp(minPitch, maxPitch, t);
-        }
 
+            // Ubah intensitas vignette (misal makin gelap makin dekat)
+            vignette.intensity.value = Mathf.Lerp(0f, 0.85f, t);
+        }
+        else
+        {
+            // Redupkan vignette saat jauh
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0f, Time.deltaTime * 2f);
+        }
     }
+
 
     private bool sembunyiScriptIsHiding()
     {

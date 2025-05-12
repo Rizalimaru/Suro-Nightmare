@@ -4,10 +4,14 @@ using TMPro;
 public class SembunyiLemari : MonoBehaviour
 {
     private bool canHide = false;
-    private bool isHiding = false;
+    public bool isHiding = false;
     private GameObject player;
 
-    public TextMeshProUGUI hideTextUI; // drag UI Text ke sini via inspector
+    public bool IsHiding => isHiding;
+
+    public TextMeshProUGUI hideTextUI;
+
+    public BoxCollider2D kuntilanakCollider;
 
     void Start()
     {
@@ -27,11 +31,12 @@ public class SembunyiLemari : MonoBehaviour
 
             sr.enabled = !isHiding;
             controller.enabled = !isHiding;
+            kuntilanakCollider.enabled = !isHiding;
 
             if (isHiding)
                 rb.velocity = Vector2.zero;
 
-            UpdateHideText(); // Update isi teks
+            UpdateHideText();
         }
     }
 
