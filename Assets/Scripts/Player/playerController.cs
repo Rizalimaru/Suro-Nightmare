@@ -67,7 +67,7 @@ public class playerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        if (Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxis("Horizontal") != 0 & !isCrounching)
         {
             animator.SetBool("isWalking", true); // Set animator ke running
         }
