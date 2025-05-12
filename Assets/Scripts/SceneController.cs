@@ -13,14 +13,6 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            NextScene();
-        }
-    }
-
     public void NextScene()
     {
         StartCoroutine(LoadScene());
