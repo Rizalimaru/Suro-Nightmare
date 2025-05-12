@@ -1,15 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class enemyPocong : MonoBehaviour
 {
-    [Header("Target")]
-    public Transform player;
-
     [Header("Movement Settings")]
     public float moveSpeed = 3f;
     public float chaseRange = 10f;
 
+    private Transform player;
     private Rigidbody2D rb;
     private Collider2D col;
 
@@ -19,13 +18,24 @@ public class enemyPocong : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
     }
 
     void Update()
     {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
+        }
+
         if (isStunned || player == null)
         {
-            rb.velocity = Vector2.zero; // Diam jika stun
+            rb.velocity = Vector2.zero;
             return;
         }
 
@@ -60,16 +70,40 @@ public class enemyPocong : MonoBehaviour
         isStunned = true;
 
         if (col != null)
-            col.enabled = false; // Matikan collider agar bisa dilewati
+            col.enabled= false;
 
-        rb.velocity = Vector2.zero; // Hentikan gerakan
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         yield return new WaitForSeconds(duration);
 
         if (col != null)
-            col.enabled = true; // Aktifkan kembali collider
+            col.enabled = true;
+
+        rb.gravityScale = originalGravity;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         isStunned = false;
+    }
+
+    // Tambahan untuk reload scene saat collide dengan player
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void OnDrawGizmosSelected()

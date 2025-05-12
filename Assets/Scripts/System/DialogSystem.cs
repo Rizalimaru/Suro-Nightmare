@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -7,10 +6,12 @@ public class dialogSystem : MonoBehaviour
 {
     [Header("UI Komponen")]
     [SerializeField] private TMP_Text dialogText;
+    [SerializeField] private TMP_Text nameText;
 
     [Header("Dialog")]
     [TextArea(3, 5)]
     [SerializeField] private string[] dialogLines;
+    [SerializeField] private string[] nameLines;
 
     [Header("Typing Effect")]
     [SerializeField] private float typingSpeed = 0.03f;
@@ -30,10 +31,11 @@ public class dialogSystem : MonoBehaviour
         {
             if (isTyping)
             {
-                // Skip typing and show full line instantly
                 StopCoroutine(typingCoroutine);
-                dialogText.text = dialogLines[currentLine - 1];
+                dialogText.text = dialogLines[currentLine];
+                nameText.text = nameLines[currentLine];
                 isTyping = false;
+                currentLine++;
             }
             else
             {
@@ -44,30 +46,32 @@ public class dialogSystem : MonoBehaviour
 
     void ShowNextLine()
     {
-        if (currentLine < dialogLines.Length)
+        if (currentLine < dialogLines.Length && currentLine < nameLines.Length)
         {
-            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine]));
-            currentLine++;
+            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine], nameLines[currentLine]));
         }
         else
         {
-            // Dialog selesai, sembunyikan atau lanjutkan ke aksi berikutnya
+            // Dialog selesai
             dialogText.text = "";
-            gameObject.SetActive(false); // atau panggil event berikutnya
+            nameText.text = "";
+            gameObject.SetActive(false); // Atau aksi selanjutnya
         }
     }
 
-    IEnumerator TypeLine(string line)
+    IEnumerator TypeLine(string dialog, string speaker)
     {
         isTyping = true;
         dialogText.text = "";
+        nameText.text = speaker;
 
-        foreach (char letter in line.ToCharArray())
+        foreach (char letter in dialog)
         {
             dialogText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
 
         isTyping = false;
+        currentLine++;
     }
 }
