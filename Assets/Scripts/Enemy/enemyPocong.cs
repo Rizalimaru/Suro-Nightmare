@@ -71,17 +71,25 @@ public class enemyPocong : MonoBehaviour
         isStunned = true;
 
         if (col != null)
-            col.enabled = false;
+            col.isTrigger = true;
+
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
 
         rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         yield return new WaitForSeconds(duration);
 
         if (col != null)
-            col.enabled = true;
+            col.isTrigger = false;
+
+        rb.gravityScale = originalGravity;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         isStunned = false;
     }
+
 
     void OnDrawGizmosSelected()
     {
