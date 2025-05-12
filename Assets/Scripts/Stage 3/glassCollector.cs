@@ -27,7 +27,7 @@ public class GlassCollector : MonoBehaviour
 
         if (collected >= totalFragments && fullMirror != null)
         {
-            fullMirror.SetActive(true);
+            Flashbang.instance.ActiveFlashBang();
         }
 
         ShowInteractText(false);
