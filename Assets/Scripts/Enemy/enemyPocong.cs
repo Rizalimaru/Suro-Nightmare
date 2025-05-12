@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class enemyPocong : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class enemyPocong : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
-        // Cari GameObject dengan tag "Player" di awal
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
@@ -26,7 +26,6 @@ public class enemyPocong : MonoBehaviour
 
     void Update()
     {
-        // Jika player belum ditemukan (misal baru spawn), cari lagi
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -71,7 +70,7 @@ public class enemyPocong : MonoBehaviour
         isStunned = true;
 
         if (col != null)
-            col.isTrigger = true;
+            col.enabled= false;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -82,7 +81,7 @@ public class enemyPocong : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         if (col != null)
-            col.isTrigger = false;
+            col.enabled = true;
 
         rb.gravityScale = originalGravity;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -90,6 +89,22 @@ public class enemyPocong : MonoBehaviour
         isStunned = false;
     }
 
+    // Tambahan untuk reload scene saat collide dengan player
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
     void OnDrawGizmosSelected()
     {
