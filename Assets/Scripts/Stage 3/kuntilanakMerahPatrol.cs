@@ -46,5 +46,9 @@ public class KuntilanakMerahPatrol : MonoBehaviour
                 currentWaypointIndex = 0;
             }
         }
+
+
+
+        
     }
 }
