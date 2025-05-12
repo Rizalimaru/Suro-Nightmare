@@ -20,8 +20,17 @@ public class objectInteraction : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                barProgress.fillAmount += Time.deltaTime / 2; // Mengisi progress bar
+                barProgress.fillAmount += Time.deltaTime / 7; // Mengisi progress bar;
+            }
 
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+               interactionText.SetActive(false);
+            }
+
+            if(Input.GetKeyUp(KeyCode.E))
+            {
+                interactionText.SetActive(true);
             }
 
             if (barProgress.fillAmount >= 1)
