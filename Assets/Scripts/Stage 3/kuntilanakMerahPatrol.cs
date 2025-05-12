@@ -2,20 +2,12 @@ using UnityEngine;
 
 public class KuntilanakMerahPatrol : MonoBehaviour
 {
-    public Transform[] waypoints; // urutan: lantai 3 kiri > kanan > tangga turun > lantai 2 kanan > kiri > tangga naik
+    public Transform[] waypoints;
     public float speed = 2f;
     private int currentWaypointIndex = 0;
-    private SpriteRenderer sr;
-    private Rigidbody2D rb;
 
     public float rotateAngleSlopeDown = -35f;
     public float rotateAngleSlopeUp = 35f;
-
-    void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     void Update()
     {
@@ -24,37 +16,33 @@ public class KuntilanakMerahPatrol : MonoBehaviour
         Transform target = waypoints[currentWaypointIndex];
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction * speed;
+        // Gerak pakai transform.position langsung
+        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
-        // Flip sprite based on direction (x axis)
+        // Flip skala berdasarkan arah horizontal
         if (direction.x > 0)
-            sr.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);  // Menghadap kanan
         else if (direction.x < 0)
-            sr.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1); // Menghadap kiri
 
-        // Rotation adjustment for slope
+        // Rotasi saat melewati tangga
         if (target.name.Contains("SlopeDown"))
         {
             transform.rotation = Quaternion.Euler(0, 0, rotateAngleSlopeDown);
         }
-        else if (target.name.Contains("SlopeUp"))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, rotateAngleSlopeUp);
-        }
         else
         {
-            transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.identity; // Pastikan rotasi kembali normal jika tidak melewati slope
         }
 
-        // Check if arrived at waypoint
-        if (Vector2.Distance(transform.position, target.position) < 0.2f)
+        // Cek jarak sampai waypoint
+        if (Vector2.Distance(transform.position, target.position) < 0.1f)
         {
             currentWaypointIndex++;
 
+            // Jika sudah sampai di waypoint terakhir, kembali ke waypoint pertama
             if (currentWaypointIndex >= waypoints.Length)
             {
-                // Patrol balik ke awal
-                System.Array.Reverse(waypoints);
                 currentWaypointIndex = 0;
             }
         }
