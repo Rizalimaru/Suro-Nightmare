@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
     public float jumpForce = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private bool isCrounching = false;
+    public bool isCrounching = false;
     public bool canMove = true; // Variabel untuk mengontrol gerakan
 
     private Rigidbody2D rb;
@@ -22,7 +22,7 @@ public class playerController : MonoBehaviour
     void Update()
     {   
         if (!canMove) return; // Jika tidak bisa bergerak, keluar dari fungsi
-        
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             isCrounching = true;
