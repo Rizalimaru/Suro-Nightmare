@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenyanInteraction : MonoBehaviour
 {
@@ -9,25 +10,28 @@ public class MenyanInteraction : MonoBehaviour
 
     [Header("Interaction Settings")]
     public KeyCode interactKey = KeyCode.F;
-    public float progressIncreaseSpeed = 1f;   // per second saat F ditekan
-    public float progressDecreaseSpeed = 0.5f; // per second saat F dilepas
-    public float requiredProgress = 3f;        // nilai yang harus dicapai untuk mematikan menyan
+    public float progressIncreaseSpeed = 1f;   // per detik saat F ditekan
+    public float progressDecreaseSpeed = 0.5f; // per detik saat F dilepas
+    public float requiredProgress = 3f;        // nilai total untuk mematikan menyan
 
     private float currentProgress = 0f;
     private bool isInRange = false;
     private bool isMenyanOn = true;
 
-    [Header("UI")]
+    [Header("UI (Slider)")]
     public GameObject progressBarUI;
-    public Image progressFill;
+    public Slider progressSlider;
+    public GameObject InteractionHint;
 
     [Header("Menyan Visuals")]
     public GameObject smokeEffect;
 
     void Start()
     {
+        progressSlider.maxValue = requiredProgress;
+        progressSlider.value = 0f;
         progressBarUI.SetActive(false);
-        progressFill.fillAmount = 0f;
+        InteractionHint.SetActive(false);
     }
 
     void Update()
@@ -38,6 +42,7 @@ public class MenyanInteraction : MonoBehaviour
         if (isMenyanOn && isInRange)
         {
             progressBarUI.SetActive(true);
+            InteractionHint.SetActive(true);
 
             if (Input.GetKey(interactKey))
             {
@@ -48,9 +53,9 @@ public class MenyanInteraction : MonoBehaviour
                 currentProgress -= progressDecreaseSpeed * Time.deltaTime;
             }
 
-            // Clamp value agar tidak lebih dari batas
+            // Clamp nilai
             currentProgress = Mathf.Clamp(currentProgress, 0f, requiredProgress);
-            progressFill.fillAmount = currentProgress / requiredProgress;
+            progressSlider.value = currentProgress;
 
             if (currentProgress >= requiredProgress)
             {
@@ -59,8 +64,8 @@ public class MenyanInteraction : MonoBehaviour
         }
         else
         {
-            // Player keluar dari area
             progressBarUI.SetActive(false);
+            InteractionHint.SetActive(false);
         }
     }
 
@@ -68,12 +73,12 @@ public class MenyanInteraction : MonoBehaviour
     {
         isMenyanOn = false;
         progressBarUI.SetActive(false);
-        progressFill.fillAmount = 0f;
+        InteractionHint.SetActive(false);
+        progressSlider.value = 0f;
         if (smokeEffect) smokeEffect.SetActive(false);
         Debug.Log("Menyan berhasil dimatikan!");
     }
 
-    // Visual bantu di editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
