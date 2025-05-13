@@ -8,6 +8,7 @@ public class progressObjektif : MonoBehaviour
     public TMP_Text Objectif;
     public GameObject objectifHint;
     public GameObject nextStep;
+    public GameObject TP;
     public int currentProgress;
     public int totalProgress;
 
@@ -41,6 +42,7 @@ public class progressObjektif : MonoBehaviour
         {
             objectifHint.SetActive(false);
             nextStep.SetActive(true);
+            TP.SetActive(true);
         }
     }
 }
