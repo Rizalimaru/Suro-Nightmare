@@ -26,5 +26,13 @@ public class SceneController : MonoBehaviour
         animatorSceneTransition.SetTrigger("SceneStart");
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            NextScene();
+        }
+    }
+
 
 }

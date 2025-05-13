@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   dapetKafan: 0
-  dapetKeris: 0
+  dapetKeris: 1
   dapetKaca: 0
