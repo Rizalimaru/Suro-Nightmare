@@ -9,10 +9,10 @@ public class menyanInteraction : MonoBehaviour
     public float interactRange = 2f;
 
     [Header("Interaction Settings")]
-    public KeyCode interactKey = KeyCode.F;
-    public float progressIncreaseSpeed = 1f;   // per detik saat F ditekan
-    public float progressDecreaseSpeed = 1f;   // per detik saat F dilepas
-    public float requiredProgress = 3f;        // nilai total untuk mematikan menyan
+    public KeyCode interactKey;
+    public float progressIncreaseSpeed = 1f;
+    public float progressDecreaseSpeed = 1f;
+    public float requiredProgress = 3f;
 
     private float currentProgress = 0f;
     private bool isInRange = false;
@@ -23,23 +23,24 @@ public class menyanInteraction : MonoBehaviour
     public Slider progressSlider;
     public GameObject InteractionHint;
 
-    [Header("Add On")]
-    public GameObject smokeEffect;
+    [Header("VFX (Particle Systems)")]
+    public ParticleSystem menyanOnVFX;     // efek saat menyala
+    public ParticleSystem menyanOffVFX;    // efek saat dimatikan
+
     private progressObjektif Progress;
     private spawnerPocong Pocong;
 
     void Start()
     {
-        // Ambil referensi script progress objektif
         Progress = FindObjectOfType<progressObjektif>();
-
-        // Ambil referensi script spawnerPocong yang satu GameObject dengan menyan
         Pocong = GetComponent<spawnerPocong>();
 
         progressSlider.maxValue = requiredProgress;
         progressSlider.value = 0f;
         progressBarUI.SetActive(false);
         InteractionHint.SetActive(false);
+
+        if (menyanOnVFX != null) menyanOnVFX.Play();
     }
 
     void Update()
@@ -83,8 +84,9 @@ public class menyanInteraction : MonoBehaviour
         InteractionHint.SetActive(false);
         progressSlider.value = 0f;
 
-        if (smokeEffect != null)
-            smokeEffect.SetActive(false);
+        if (!isMenyanOn)
+            menyanOnVFX.Stop();
+            menyanOffVFX.Play();
 
         // Tambah progress objektif
         if (Progress != null)
