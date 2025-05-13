@@ -3,14 +3,21 @@ using System.Collections;
 
 public class kerisEffect : MonoBehaviour
 {
-    public KeyCode stunKey = KeyCode.Q;
+    public KeyCode stunKey = KeyCode.K;
     public float stunRadius = 5f;
     public float stunDuration = 3f;
+
+    private Animator anim;
+    void Start()
+    {
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(stunKey))
         {
+            anim.SetTrigger("Keris");
             TriggerStun();
         }
     }

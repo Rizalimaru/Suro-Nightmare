@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour
                 lampu.SetActive(false); // Matikan lampu saat crouch
             }else if(playerItemData.dapetKeris)
             {
+                animator.SetTrigger("Keris");
                 Debug.Log("done");
                 Stun.TriggerStun();
             }else if(playerItemData.dapetKaca)

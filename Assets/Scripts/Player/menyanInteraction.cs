@@ -88,6 +88,7 @@ public class menyanInteraction : MonoBehaviour
         InteractionHint.SetActive(false);
         progressSlider.value = 0f;
         anim.SetBool("isInteract", false);
+        Destroy(gameObject);
 
         if (!isMenyanOn)
             menyanOnVFX.Stop();
