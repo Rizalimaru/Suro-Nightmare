@@ -40,6 +40,7 @@ public class playerController : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y); // Reset kecepatan horizontal saat crouch
                 animator.SetBool("isCrouch", true); // Set animator ke crouch
                 lampu.SetActive(false); // Matikan lampu saat crouch
+                AudioManager.Instance.PlaySFX("PlayerMovement",1);
             }else if(playerItemData.dapetKeris)
             {
                 animator.SetTrigger("Keris");

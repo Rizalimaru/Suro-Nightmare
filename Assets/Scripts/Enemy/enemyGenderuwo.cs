@@ -17,10 +17,18 @@ public class enemyGenderuwo : MonoBehaviour
     public Transform checkpoint; // Posisi checkpoint untuk mengembalikan pemain
 
     private bool isStepSoundPlaying = false; // Melacak status suara langkah
+    public AudioSource hearthBeatSound; // AudioSource untuk suara heartbeat
+
+    private float heartbeatBasePitch = 1f; // Pitch dasar untuk heartbeat
+    private float heartbeatMaxPitch = 2f; // Pitch maksimum untuk heartbeat
+    private float heartbeatDistanceThreshold = 10f; // Jarak maksimum untuk memulai heartbeat
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hearthBeatSound.loop = true; // Pastikan heartbeat diatur untuk loop
+        hearthBeatSound.Play(); // Mulai memutar heartbeat
+        hearthBeatSound.volume = 0; // Volume awal diatur ke 0
     }
 
     void Update()
@@ -28,6 +36,9 @@ public class enemyGenderuwo : MonoBehaviour
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        // Atur pitch dan volume heartbeat berdasarkan jarak ke pemain
+        UpdateHeartbeat(distanceToPlayer);
 
         // Jika bersentuhan dengan pemain dan pemain tidak crouch, follow player
         if (isFollowingPlayer)
@@ -44,6 +55,24 @@ public class enemyGenderuwo : MonoBehaviour
 
         // Patrol ke arah pemain
         PatrolTowardsPlayer();
+    }
+
+    void UpdateHeartbeat(float distanceToPlayer)
+    {
+        if (distanceToPlayer <= heartbeatDistanceThreshold)
+        {
+            // Hitung pitch berdasarkan jarak (semakin dekat, semakin cepat)
+            float normalizedDistance = Mathf.Clamp01(1 - (distanceToPlayer / heartbeatDistanceThreshold));
+            hearthBeatSound.pitch = Mathf.Lerp(heartbeatBasePitch, heartbeatMaxPitch, normalizedDistance);
+
+            // Atur volume berdasarkan jarak (semakin dekat, semakin keras)
+            hearthBeatSound.volume = normalizedDistance;
+        }
+        else
+        {
+            // Jika pemain terlalu jauh, hentikan heartbeat
+            hearthBeatSound.volume = 0;
+        }
     }
 
     void PatrolTowardsPlayer()
@@ -147,5 +176,9 @@ public class enemyGenderuwo : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, maxPatrolDistance);
+
+        // Gambar lingkaran untuk jarak heartbeat
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, heartbeatDistanceThreshold);
     }
 }

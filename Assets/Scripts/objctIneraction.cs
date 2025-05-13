@@ -29,7 +29,7 @@ public class objctIneraction : MonoBehaviour
     {
         // Periksa input E hanya jika pemain berada di dalam trigger
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
-        {
+        {   
             canvasInteraction.SetActive(true);
             UpdateItemData();
             UpdatePlayerItemData();
