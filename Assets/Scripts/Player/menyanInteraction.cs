@@ -29,9 +29,11 @@ public class menyanInteraction : MonoBehaviour
 
     private progressObjektif Progress;
     private spawnerPocong Pocong;
+    private Animator anim;
 
     void Start()
     {
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         Progress = FindObjectOfType<progressObjektif>();
         Pocong = GetComponent<spawnerPocong>();
 
@@ -55,10 +57,12 @@ public class menyanInteraction : MonoBehaviour
 
             if (Input.GetKey(interactKey))
             {
+                anim.SetBool("isInteract", true);
                 currentProgress += progressIncreaseSpeed * Time.deltaTime;
             }
             else
             {
+                anim.SetBool("isInteract", false);
                 currentProgress -= progressDecreaseSpeed * Time.deltaTime;
             }
 
@@ -83,6 +87,7 @@ public class menyanInteraction : MonoBehaviour
         progressBarUI.SetActive(false);
         InteractionHint.SetActive(false);
         progressSlider.value = 0f;
+        anim.SetBool("isInteract", false);
 
         if (!isMenyanOn)
             menyanOnVFX.Stop();

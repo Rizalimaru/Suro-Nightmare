@@ -15,7 +15,7 @@ public class kerisEffect : MonoBehaviour
         }
     }
 
-    void TriggerStun()
+    public void TriggerStun()
     {
         Collider2D[] hitObjects = Physics2D.OverlapCircleAll(transform.position, stunRadius);
 

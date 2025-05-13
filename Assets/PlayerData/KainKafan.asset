@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: KainKafan
   m_EditorClassIdentifier: 
   itemName: Kain Kafan
-  itemDescription: Kamu mendapatkan item Kain Kafan, tekan F utnuk menggunakan kain
-    kafa.
-  itemIcon: {fileID: 0}
+  itemDescription: Kamu mendapatkan item Kain Kafan, tekan F untuk menggunakan kain
+    kafan.
+  itemIcon: {fileID: 21300000, guid: bd9b0b6cc4335bd43ba22d45a8e989f5, type: 3}

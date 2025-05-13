@@ -13,6 +13,8 @@ public class playerController : MonoBehaviour
     private Animator animator; // Tambahkan variabel animator
     private SpriteRenderer spriteRenderer; // Tambahkan referensi ke SpriteRenderer
     public GameObject lampu;
+    public PlayerItemData playerItemData;
+    private kerisEffect Stun;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -20,6 +22,7 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
+        Stun = GetComponent<kerisEffect>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); // Ambil komponen Animator dari GameObject ini
         spriteRenderer = GetComponent<SpriteRenderer>(); // Ambil komponen SpriteRenderer dari GameObject ini
@@ -29,19 +32,40 @@ public class playerController : MonoBehaviour
     {   
         if (!canMove) return; // Jika tidak bisa bergerak, keluar dari fungsi
 
-        if (Input.GetKeyDown(KeyCode.C) && isGrounded)
-        {
-            isCrounching = true;
-            rb.velocity = new Vector2(0, rb.velocity.y); // Reset kecepatan horizontal saat crouch
-            animator.SetBool("isCrouch", true); // Set animator ke crouch
-            lampu.SetActive(false); // Matikan lampu saat crouch
+        if (Input.GetKeyDown(KeyCode.F) && isGrounded)
+        {   
+            if(playerItemData.dapetKafan)
+            {
+                isCrounching = true;
+                rb.velocity = new Vector2(0, rb.velocity.y); // Reset kecepatan horizontal saat crouch
+                animator.SetBool("isCrouch", true); // Set animator ke crouch
+                lampu.SetActive(false); // Matikan lampu saat crouch
+            }else if(playerItemData.dapetKeris)
+            {
+                Debug.Log("done");
+                Stun.TriggerStun();
+            }else if(playerItemData.dapetKaca)
+            {
+               
+            }
+            
         }
 
-        if (Input.GetKeyUp(KeyCode.C) && isGrounded)
+        if (Input.GetKeyUp(KeyCode.F) && isGrounded)
         {   
-            animator.SetBool("isCrouch", false); // Set animator ke idle
-            isCrounching = false; // Keluar dari crouch
-            lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
+            if(playerItemData.dapetKafan)
+            {
+                animator.SetBool("isCrouch", false); // Set animator ke idle
+                isCrounching = false; // Keluar dari crouch
+                lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
+            }else if(playerItemData.dapetKeris)
+            {
+
+            }else if(playerItemData.dapetKaca)
+            {
+               
+            }
+            
         }
 
         // Hanya bergerak jika tidak crouch
@@ -95,4 +119,5 @@ public class playerController : MonoBehaviour
             }
         }
     }
+
 }
