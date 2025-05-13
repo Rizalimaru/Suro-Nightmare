@@ -46,7 +46,8 @@ public class playerController : MonoBehaviour
                 Stun.TriggerStun();
             }else if(playerItemData.dapetKaca)
             {
-               
+               Flashbang.instance.ActiveFlashBang();
+               playerItemData.dapetKaca = false; // Hapus kaca setelah digunakan
             }
             
         }

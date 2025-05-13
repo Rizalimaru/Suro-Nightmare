@@ -19,6 +19,9 @@ public class SembunyiLemari : MonoBehaviour
 
     public GameObject lampu2d;
 
+    // mendeteksi biar tidak bisa di spam
+    private bool isHidingCoroutineRunning = false;
+
     void Start()
     {
         if (hideTextUI != null)
@@ -27,8 +30,11 @@ public class SembunyiLemari : MonoBehaviour
 
     void Update()
     {
-        if (canHide && Input.GetKeyDown(KeyCode.E))
+        if (canHide && Input.GetKeyDown(KeyCode.E) && isHidingCoroutineRunning == false)
         {
+            isHidingCoroutineRunning = true;
+
+
             isHiding = !isHiding;
 
             // Jalankan coroutine untuk mengatur jeda
@@ -38,8 +44,20 @@ public class SembunyiLemari : MonoBehaviour
 
     private IEnumerator HandleHiding(bool hide)
     {
+        var rb = player.GetComponent<Rigidbody2D>();
+        var controller = player.GetComponent<playerController>();
+
+        var playerAnim = player.GetComponent<Animator>();
+
+        // Stop semua animasi player
+        playerAnim.SetBool("isWalking", false);
+
+        controller.enabled = false; // Nonaktifkan kontrol player saat bersembunyi
+
+        
         // Tampilkan lemari 2D terlebih dahulu
         lemari2d.SetActive(true);
+
 
         foreach (BoxCollider2D collider in kuntilanakCollider)
         {
@@ -47,13 +65,16 @@ public class SembunyiLemari : MonoBehaviour
         }
 
         // Tunggu selama 1 detik
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
+        
+
+        controller.enabled = !hide;
+
+        isHidingCoroutineRunning = false;
         lemari2d.SetActive(false); // Sembunyikan lemari 2D setelah jeda
 
         // Sembunyikan atau tampilkan player dan kontrol
-        var rb = player.GetComponent<Rigidbody2D>();
-        var controller = player.GetComponent<playerController>();
 
         //matikan sprite renderer player
         var spriteRenderer = player.GetComponent<SpriteRenderer>();
@@ -62,7 +83,6 @@ public class SembunyiLemari : MonoBehaviour
             spriteRenderer.enabled = !hide;
         }
 
-        controller.enabled = !hide;
         lampu2d.SetActive(!hide);
 
  

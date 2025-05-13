@@ -4367,7 +4367,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 1937560881}
+  glassImage: {fileID: 901820034}
+  glassTextValue: Pecahan Cermin 3 Ditemukan
+  cermin: {fileID: 21300000, guid: 4eda590a6752f084ab373e05979d5036, type: 3}
   glassSFXPrefab: {fileID: 5517948988582495960, guid: aeba23923a84dc54b8e48437f82ac931, type: 3}
+  uiGlassFound: {fileID: 1001175083}
 --- !u!4 &176546980
 Transform:
   m_ObjectHideFlags: 0
@@ -5983,6 +5987,107 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!1001 &245413125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 308445432545483707, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340657374982727433, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_Name
+      value: InteractionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340657374982727433, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
 --- !u!1 &246678408
 GameObject:
   m_ObjectHideFlags: 0
@@ -17116,6 +17221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+      propertyPath: playerItemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b8fa01e5a3205d48b0d5432c907c3aa, type: 2}
     - target: {fileID: 4850122172188989458, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: m_Color.b
       value: 0.9764151
@@ -18042,6 +18151,12 @@ MonoBehaviour:
   selesaiAmbilSemuaCermin: {fileID: 421220150}
   uiObjective: {fileID: 313787036}
   mainCamera: {fileID: 519420028}
+  playerItemData: {fileID: 11400000, guid: 5b8fa01e5a3205d48b0d5432c907c3aa, type: 2}
+  glassText: {fileID: 1922487789}
+  glassImage: {fileID: 901820034}
+  cermin2: {fileID: 0}
+  glassTextValueKaca: 
+  uiGlass: {fileID: 1001175083}
 --- !u!4 &758451827
 Transform:
   m_ObjectHideFlags: 0
@@ -18591,7 +18706,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 1756424799}
+  glassImage: {fileID: 901820034}
+  glassTextValue: Pecahan Cermin 2 Ditemukan
+  cermin: {fileID: 21300000, guid: 81bd63d82e4396746b606cdf36a4a196, type: 3}
   glassSFXPrefab: {fileID: 5517948988582495960, guid: aeba23923a84dc54b8e48437f82ac931, type: 3}
+  uiGlassFound: {fileID: 1001175083}
 --- !u!4 &799412945
 Transform:
   m_ObjectHideFlags: 0
@@ -21139,6 +21258,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &901820034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7291055642481679141, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+  m_PrefabInstance: {fileID: 245413125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906393345
 GameObject:
   m_ObjectHideFlags: 0
@@ -21172,7 +21302,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 1155374230}
+  glassImage: {fileID: 901820034}
+  glassTextValue: Pecahan Cermin 1 Ditemukan
+  cermin: {fileID: 21300000, guid: f4e072119c0954341ae69238ca4de7c7, type: 3}
   glassSFXPrefab: {fileID: 5517948988582495960, guid: aeba23923a84dc54b8e48437f82ac931, type: 3}
+  uiGlassFound: {fileID: 1001175083}
 --- !u!4 &906393348
 Transform:
   m_ObjectHideFlags: 0
@@ -23081,6 +23215,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!1 &1001175083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3340657374982727433, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+  m_PrefabInstance: {fileID: 245413125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1012379126
 GameObject:
   m_ObjectHideFlags: 0
@@ -24035,11 +24174,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
---- !u!82 &1064874898 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3460452055225798832, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-  m_PrefabInstance: {fileID: 8019140192826115122}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065270004
 GameObject:
   m_ObjectHideFlags: 0
@@ -41954,7 +42088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101, y: -427}
+  m_AnchoredPosition: {x: -101, y: -358}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1872109335
@@ -41977,7 +42111,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cermin Menyatu
+  m_text: 'Cermin Menyatu
+
+    Gunakan F Untuk Menggunakan Setelah Ini'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d22952fbbf4dce408650fe205856214, type: 2}
   m_sharedMaterial: {fileID: 8215612420139223175, guid: 4d22952fbbf4dce408650fe205856214, type: 2}
@@ -42011,7 +42147,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -42040,7 +42176,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -6.098404, z: -393.3435, w: 0}
+  m_margin: {x: -596.3978, y: -6.098404, z: -792.71704, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -42528,6 +42664,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1165461878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1922487789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 402546993527826085, guid: daa481d0f9afaef45a4698f66acea020, type: 3}
+  m_PrefabInstance: {fileID: 245413125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922593207
 GameObject:
   m_ObjectHideFlags: 0
@@ -48249,10 +48396,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioBackgroundMusicGroups.Array.data[2].backgroundMusics.Array.data[1]
-      value: 
-      objectReference: {fileID: 1064874898}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48283,3 +48426,4 @@ SceneRoots:
   - {fileID: 1074037774}
   - {fileID: 1280329569}
   - {fileID: 421220152}
+  - {fileID: 245413125}
