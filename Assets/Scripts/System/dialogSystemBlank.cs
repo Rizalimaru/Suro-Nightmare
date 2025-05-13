@@ -1,15 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class dialogSystem : MonoBehaviour
+public class dialogSystemBlank : MonoBehaviour
 {
     [Header("UI Komponen")]
     [SerializeField] private TMP_Text dialogText;
-    [SerializeField] private TMP_Text nameText;
 
     [Header("Dialog")]
-    [SerializeField] private string[] nameLines;
     [TextArea(3, 5)]
     [SerializeField] private string[] dialogLines;
 
@@ -17,7 +16,8 @@ public class dialogSystem : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.03f;
 
     [Header("Aksi Selanjutnya")]
-    [SerializeField] private GameObject nextGameObject; // Objek yang akan diaktifkan setelah dialog selesai
+    [SerializeField] private GameObject nextGameObject;
+    [SerializeField] private string nextSceneName;
 
     private int currentLine = 0;
     private bool isTyping = false;
@@ -36,7 +36,6 @@ public class dialogSystem : MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
                 dialogText.text = dialogLines[currentLine];
-                nameText.text = nameLines[currentLine];
                 isTyping = false;
                 currentLine++;
             }
@@ -49,30 +48,33 @@ public class dialogSystem : MonoBehaviour
 
     void ShowNextLine()
     {
-        if (currentLine < dialogLines.Length && currentLine < nameLines.Length)
+        if (currentLine < dialogLines.Length)
         {
-            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine], nameLines[currentLine]));
+            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine]));
         }
         else
         {
             // Dialog selesai
             dialogText.text = "";
-            nameText.text = "";
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // Atau aksi selanjutnya
 
             if (nextGameObject != null)
             {
                 nextGameObject.SetActive(true); // Tampilkan objek berikutnya
             }
+            else
+            {
+                // Semua GameObject selesai → pindah ke scene berikutnya
+                SceneManager.LoadScene(nextSceneName);
+            }
         }
     }
 
-    IEnumerator TypeLine(string dialog, string speaker)
+    IEnumerator TypeLine(string dialog)
     {
         isTyping = true;
         dialogText.text = "";
-        nameText.text = speaker;
-
+ 
         foreach (char letter in dialog)
         {
             dialogText.text += letter;
@@ -82,6 +84,4 @@ public class dialogSystem : MonoBehaviour
         isTyping = false;
         currentLine++;
     }
-
-    
 }
