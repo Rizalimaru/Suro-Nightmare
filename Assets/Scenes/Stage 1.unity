@@ -6319,6 +6319,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7149566}
     - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 1646879861}
+    - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: playerItemData
       value: 
       objectReference: {fileID: 11400000, guid: 5b8fa01e5a3205d48b0d5432c907c3aa, type: 2}

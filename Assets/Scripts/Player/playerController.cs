@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -14,15 +15,28 @@ public class playerController : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Tambahkan referensi ke SpriteRenderer
     public GameObject lampu;
     public PlayerItemData playerItemData;
-    private kerisEffect Stun;
+    public Volume globalVolume; // Drag Global Volume di Inspector
+    private Vignette vignette; // Referensi ke efek vignette
+    
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
     void Start()
-    {
-        Stun = GetComponent<kerisEffect>();
+    {   
+
+        playerItemData.dapetKaca = false; // Reset status kaca saat mulai
+        playerItemData.dapetKeris = false; // Reset status keris saat mulai
+        playerItemData.dapetKafan = false; // Reset status kafan saat mulai
+
+        if (globalVolume != null && globalVolume.profile != null)
+        {
+            globalVolume.profile.TryGet(out vignette);
+        }
+        
+
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); // Ambil komponen Animator dari GameObject ini
         spriteRenderer = GetComponent<SpriteRenderer>(); // Ambil komponen SpriteRenderer dari GameObject ini
@@ -35,7 +49,8 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && isGrounded)
         {   
             if(playerItemData.dapetKafan)
-            {
+            {   
+                vignette.intensity.value = 0.85f; // Ubah intensitas vignette saat crouch
                 isCrounching = true;
                 rb.velocity = new Vector2(0, rb.velocity.y); // Reset kecepatan horizontal saat crouch
                 animator.SetBool("isCrouch", true); // Set animator ke crouch
@@ -45,7 +60,6 @@ public class playerController : MonoBehaviour
             {
                 animator.SetTrigger("Keris");
                 Debug.Log("done");
-                Stun.TriggerStun();
             }else if(playerItemData.dapetKaca)
             {
                Flashbang.instance.ActiveFlashBang();
@@ -57,7 +71,8 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F) && isGrounded)
         {   
             if(playerItemData.dapetKafan)
-            {
+            {   
+                vignette.intensity.value = 0f; // Kembalikan intensitas vignette saat tidak crouch
                 animator.SetBool("isCrouch", false); // Set animator ke idle
                 isCrounching = false; // Keluar dari crouch
                 lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
