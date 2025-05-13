@@ -11,6 +11,7 @@ public class enemyPocong : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private Collider2D col;
+    private Animator anim; 
 
     private bool isStunned = false;
 
@@ -18,10 +19,13 @@ public class enemyPocong : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>(); 
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
+
+        FacePlayer();
     }
 
     void Update()
@@ -36,6 +40,7 @@ public class enemyPocong : MonoBehaviour
         if (isStunned || player == null)
         {
             rb.velocity = Vector2.zero;
+            anim.SetBool("isChasing", true);
             return;
         }
 
@@ -48,6 +53,7 @@ public class enemyPocong : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+            anim.SetBool("isChasing", false);
         }
     }
 
@@ -55,6 +61,29 @@ public class enemyPocong : MonoBehaviour
     {
         Vector2 direction = (player.position - transform.position).normalized;
         rb.velocity = direction * moveSpeed;
+
+        FacePlayer();
+        SetChasingAnimation(true); // 🔹 Set animasi mengejar
+    }
+
+    void FacePlayer()
+    {
+        if (player == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (player.position.x > transform.position.x)
+            scale.x = Mathf.Abs(scale.x); // Menghadap kanan
+        else
+            scale.x = -Mathf.Abs(scale.x); // Menghadap kiri
+
+        transform.localScale = scale;
+    }
+
+    void SetChasingAnimation(bool isChasing)
+    {
+        if (anim != null)
+            anim.SetBool("isChasing", isChasing); // 🔹 Ubah parameter animator
     }
 
     public void Stun(float duration)
@@ -68,9 +97,10 @@ public class enemyPocong : MonoBehaviour
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
+        SetChasingAnimation(false); // 🔹 Set animasi idle saat stun
 
         if (col != null)
-            col.enabled= false;
+            col.enabled = false;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -89,7 +119,6 @@ public class enemyPocong : MonoBehaviour
         isStunned = false;
     }
 
-    // Tambahan untuk reload scene saat collide dengan player
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
