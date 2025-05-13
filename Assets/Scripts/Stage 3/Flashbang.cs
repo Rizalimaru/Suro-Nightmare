@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class Flashbang : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Flashbang : MonoBehaviour
     public GameObject kuntilanak; // Drag kuntilanak ke Inspector
 
     public GameObject whiteScreen; // Drag white screen ke Inspector
+
+    public Volume globalVolume; // Drag Global Volume di Inspector
+    private Vignette vignette; // Referensi ke efek vignette
 
     void Start()
     {
@@ -67,6 +71,15 @@ public class Flashbang : MonoBehaviour
             // Mengaktifkan kuntilanak
         Instantiate(flashSFXPrefab, transform.position, Quaternion.identity);
         kuntilanak.SetActive(false);
+        //disable vignette
+        if (globalVolume != null && globalVolume.profile != null)
+        {
+            globalVolume.profile.TryGet(out vignette);
+            if (vignette != null)
+            {
+                vignette.intensity.value = 0f; // Set ke 0 untuk menghilangkan efek
+            }
+        }
         TriggerFlash();
         StartCoroutine(RemoveWhiteScreen());
 

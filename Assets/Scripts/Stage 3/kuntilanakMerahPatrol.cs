@@ -47,9 +47,9 @@ public class KuntilanakMerahPatrol : MonoBehaviour
 
         // Flip skala berdasarkan arah horizontal
         if (direction.x > 0)
-            transform.localScale = new Vector3(1, 1, 1);  // Menghadap kanan
+            transform.localScale = new Vector3(-1, 1, 1);  // Menghadap kanan
         else if (direction.x < 0)
-            transform.localScale = new Vector3(-1, 1, 1); // Menghadap kiri
+            transform.localScale = new Vector3(1, 1, 1); // Menghadap kiri
 
         // Rotasi saat melewati tangga
         if (target.name.Contains("SlopeDown"))
