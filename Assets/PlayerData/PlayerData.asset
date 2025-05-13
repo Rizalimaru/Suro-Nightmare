@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72db116bb019fc4a91c397bbe49de39, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  dapetKafan: 0
+  dapetKafan: 1
   dapetKeris: 0
-  dapetKaca: 1
+  dapetKaca: 0
