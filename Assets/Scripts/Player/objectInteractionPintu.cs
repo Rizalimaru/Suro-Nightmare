@@ -8,10 +8,14 @@ public class objectInteraction : MonoBehaviour
     public GameObject interactionText;
     public Image barProgress;
     private bool isInteracting = false;
+    public Sprite pintuBuka;
+    private Animator playerAnim;
+    public GameObject barier;
 
     void Start()
     {
         interactionText.SetActive(false);
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     void Update()
@@ -24,22 +28,37 @@ public class objectInteraction : MonoBehaviour
             }
 
             if(Input.GetKeyDown(KeyCode.E))
-            {
-               interactionText.SetActive(false);
+            {   
+                AudioManager.Instance.PlaySFX("InteractionObject", 1);
+                playerAnim.SetBool("isInteract", true);
+                interactionText.SetActive(false);
             }
 
             if(Input.GetKeyUp(KeyCode.E))
-            {
+            {   
+                AudioManager.Instance.StopSFX("InteractionObject", 1);
+                playerAnim.SetBool("isInteract", false);
                 interactionText.SetActive(true);
             }
 
             if (barProgress.fillAmount >= 1)
-            {
+            {   
                 // Lakukan aksi saat progress bar penuh
                 Debug.Log("Interaksi selesai!");
                 barProgress.fillAmount = 0; // Reset progress bar
                 isInteracting = false;
                 interactionText.SetActive(false);
+                barier.SetActive(false); // Menonaktifkan objek barier
+                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+                AudioManager.Instance.PlaySFX("InteractionObject", 0);
+                playerAnim.SetBool("isInteract", false);
+                if(spriteRenderer != null)
+                {
+                    spriteRenderer.sprite = pintuBuka; // Ganti sprite pintu
+                }else
+                {
+                    Debug.LogWarning("SpriteRenderer tidak ditemukan pada GameObject ini.");
+                }
             }
         }
     }

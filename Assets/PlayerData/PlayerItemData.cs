@@ -7,6 +7,6 @@ using UnityEngine;
 public class PlayerItemData : ScriptableObject
 {
     public bool dapetKafan;
-    public bool dapetKetis;
+    public bool dapetKeris;
     public bool dapetKaca;
 }
