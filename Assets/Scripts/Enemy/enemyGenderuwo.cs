@@ -16,6 +16,8 @@ public class enemyGenderuwo : MonoBehaviour
     private bool isFollowingPlayer = false;
     public Transform checkpoint; // Posisi checkpoint untuk mengembalikan pemain
 
+    private bool isStepSoundPlaying = false; // Melacak status suara langkah
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,18 +56,39 @@ public class enemyGenderuwo : MonoBehaviour
         {
             Flip();
         }
+
+        // Mainkan suara langkah jika Genderuwo sedang bergerak
+        if (!isStepSoundPlaying)
+        {
+            AudioManager.Instance.PlaySFX("GenderuwoStep", 0); // Pastikan grup dan indeks sesuai
+            isStepSoundPlaying = true;
+        }
     }
 
     void FollowPlayer()
     {
         float moveDirection = player.position.x > transform.position.x ? 1 : -1;
         rb.velocity = new Vector2(moveDirection * patrolSpeed, rb.velocity.y);
+
+        // Mainkan suara langkah jika Genderuwo sedang bergerak
+        if (!isStepSoundPlaying)
+        {
+            AudioManager.Instance.PlaySFX("GenderuwoStep", 0); // Pastikan grup dan indeks sesuai
+            isStepSoundPlaying = true;
+        }
     }
 
     void Flip()
     {
         isFacingRight = !isFacingRight;
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        // Hentikan suara langkah saat Genderuwo berhenti untuk berbalik
+        if (isStepSoundPlaying)
+        {
+            AudioManager.Instance.StopSFX("GenderuwoStep", 0);
+            isStepSoundPlaying = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
