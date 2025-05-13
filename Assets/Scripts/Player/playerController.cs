@@ -16,6 +16,7 @@ public class playerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
     void Start()
     {
@@ -28,15 +29,19 @@ public class playerController : MonoBehaviour
     {   
         if (!canMove) return; // Jika tidak bisa bergerak, keluar dari fungsi
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && isGrounded)
         {
             isCrounching = true;
             rb.velocity = new Vector2(0, rb.velocity.y); // Reset kecepatan horizontal saat crouch
+            animator.SetBool("isCrouch", true); // Set animator ke crouch
+            lampu.SetActive(false); // Matikan lampu saat crouch
         }
 
-        if (Input.GetKeyUp(KeyCode.C))
-        {
+        if (Input.GetKeyUp(KeyCode.C) && isGrounded)
+        {   
+            animator.SetBool("isCrouch", false); // Set animator ke idle
             isCrounching = false; // Keluar dari crouch
+            lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
         }
 
         // Hanya bergerak jika tidak crouch
@@ -65,15 +70,29 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrounching)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetTrigger("Jump"); // Set animator ke jump
         }
 
-        if (Input.GetAxis("Horizontal") != 0 & !isCrounching)
+        // Logika untuk suara berjalan
+        if (Input.GetAxis("Horizontal") != 0 && !isCrounching)
         {
             animator.SetBool("isWalking", true); // Set animator ke running
+
+            if (!isWalkingSoundPlaying) // Hanya mainkan suara jika belum diputar
+            {
+                AudioManager.Instance.PlaySFX("PlayerMovement", 0);
+                isWalkingSoundPlaying = true;
+            }
         }
         else
         {
             animator.SetBool("isWalking", false); // Set animator ke idle
+
+            if (isWalkingSoundPlaying) // Hanya hentikan suara jika sedang diputar
+            {
+                AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                isWalkingSoundPlaying = false;
+            }
         }
     }
 }
