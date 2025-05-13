@@ -12,6 +12,7 @@ public class objctIneraction : MonoBehaviour
     public Image itemIcon; // Ikon item
     public TextMeshProUGUI itemDescription; // Deskripsi item
     public GameObject canvasEToInteract;
+    public float delay = 2f; // Waktu delay sebelum menyembunyikan canvas
 
     // Dropdown di Inspector untuk memilih item
     public enum ItemType { DapetKafan, DapetKetis, DapetKaca }
@@ -33,7 +34,7 @@ public class objctIneraction : MonoBehaviour
             canvasInteraction.SetActive(true);
             UpdateItemData();
             UpdatePlayerItemData();
-            StartCoroutine(HideCanvasAfterDelay(5f)); // Menyembunyikan canvas setelah 2 detik
+            StartCoroutine(HideCanvasAfterDelay(delay)); // Menyembunyikan canvas setelah 2 detik
         }
     }
 

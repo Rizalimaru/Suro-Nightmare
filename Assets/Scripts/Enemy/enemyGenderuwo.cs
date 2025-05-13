@@ -21,7 +21,7 @@ public class enemyGenderuwo : MonoBehaviour
 
     private float heartbeatBasePitch = 1f; // Pitch dasar untuk heartbeat
     private float heartbeatMaxPitch = 2f; // Pitch maksimum untuk heartbeat
-    private float heartbeatDistanceThreshold = 10f; // Jarak maksimum untuk memulai heartbeat
+    public float heartbeatDistanceThreshold = 10f; // Jarak maksimum untuk memulai heartbeat
 
     void Start()
     {

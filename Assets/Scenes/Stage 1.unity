@@ -1519,6 +1519,7 @@ MonoBehaviour:
   player: {fileID: 2124034299}
   checkpoint: {fileID: 1747419272}
   hearthBeatSound: {fileID: 709314571}
+  heartbeatDistanceThreshold: 20
 --- !u!50 &476609746
 Rigidbody2D:
   serializedVersion: 4
@@ -2020,8 +2021,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2722,7 +2723,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 10
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -4641,7 +4642,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 8f095bd6ce084a548ba24acfe36636d5, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 420788e8fb57a754cbaa6a5f748d37d3, type: 2}
 --- !u!4 &1646879862
 Transform:
   m_ObjectHideFlags: 0
