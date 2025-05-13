@@ -1,5 +1,8 @@
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class KuntilanakMerahPatrol : MonoBehaviour
 {
@@ -7,6 +10,7 @@ public class KuntilanakMerahPatrol : MonoBehaviour
     public static KuntilanakMerahPatrol instance;
     public Transform[] waypoints;
     public float speed = 2f;
+    
 
 
     public Transform spawnPoint;        // Tempat player akan dipindahkan saat kena kuntilanak
@@ -21,6 +25,8 @@ public class KuntilanakMerahPatrol : MonoBehaviour
     public BoxCollider2D myCollider;
 
     public SembunyiLemari lemari;
+
+    public teleportStage3_1 teleportStage3_1;
 
     void Start()
     {
@@ -94,10 +100,23 @@ public class KuntilanakMerahPatrol : MonoBehaviour
             // Reset posisi player
             if (spawnPoint != null)
             {
-                player.transform.position = spawnPoint.position;
+                myCollider.enabled = false; // Disable collider kuntilanak
+                //animasi transisi Hehe
+                
+                teleportStage3_1.teleportTransition();
+                StartCoroutine(WaitForSeconds(2f));
             }
         }
     }
+
+    IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        player.transform.position = spawnPoint.position;
+        myCollider.enabled = true;
+    } 
+
+
 
     public void SetCollisionKunti( string benar){
 

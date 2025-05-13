@@ -19,6 +19,7 @@ public class kerisEffect : MonoBehaviour
         {
             anim.SetTrigger("Keris");
             TriggerStun();
+            AudioManager.Instance.PlaySFX("Stage2", 0);
         }
     }
 

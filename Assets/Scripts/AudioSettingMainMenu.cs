@@ -122,4 +122,12 @@ public class AudioSettingMainMenu : MonoBehaviour
     {
         AudioManager.Instance.StopBackgroundMusicWithTransition("Mainmenu", 1f);
     }
+
+    // Ingin mematikan semua sfx dengan menurunkan volume sfx menjadi 0
+    public void MuteSFX()
+    {
+        sliderSoundEffect.value = 0.0001f; // Atur slider ke nilai minimum
+        AudioManager.Instance.SetVolume("SoundEffect", 0.0001f);
+    }
+
 }
