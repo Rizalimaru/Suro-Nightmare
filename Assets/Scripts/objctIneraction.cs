@@ -41,7 +41,7 @@ public class objctIneraction : MonoBehaviour
     {
         // Reset semua boolean di PlayerItemData
         playerItemData.dapetKafan = false;
-        playerItemData.dapetKetis = false;
+        playerItemData.dapetKeris = false;
         playerItemData.dapetKaca = false;
 
         // Set boolean berdasarkan pilihan dropdown di Inspector
@@ -51,14 +51,14 @@ public class objctIneraction : MonoBehaviour
                 playerItemData.dapetKafan = true;
                 break;
             case ItemType.DapetKetis:
-                playerItemData.dapetKetis = true;
+                playerItemData.dapetKeris = true;
                 break;
             case ItemType.DapetKaca:
                 playerItemData.dapetKaca = true;
                 break;
         }
 
-        Debug.Log($"PlayerItemData updated: Kafan={playerItemData.dapetKafan}, Ketis={playerItemData.dapetKetis}, Kaca={playerItemData.dapetKaca}");
+        Debug.Log($"PlayerItemData updated: Kafan={playerItemData.dapetKafan}, Keris={playerItemData.dapetKeris}, Kaca={playerItemData.dapetKaca}");
     }
 
     public void UpdateItemData()
