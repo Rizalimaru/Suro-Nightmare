@@ -15,7 +15,7 @@ public class teleportStage3_1 : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
             // Teleport player ke targetTeleport[0]
             playerTransform.position = targetTeleport[0].position;

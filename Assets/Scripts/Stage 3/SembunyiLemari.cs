@@ -13,6 +13,8 @@ public class SembunyiLemari : MonoBehaviour
 
     public BoxCollider2D [] kuntilanakCollider;
 
+    public GameObject lampu2d;
+
     void Start()
     {
         if (hideTextUI != null)
@@ -31,6 +33,7 @@ public class SembunyiLemari : MonoBehaviour
 
             sr.enabled = !isHiding;
             controller.enabled = !isHiding;
+            lampu2d.SetActive(!isHiding);
             foreach (BoxCollider2D collider in kuntilanakCollider)
             {
                 if (collider != null) collider.enabled = !isHiding;

@@ -58,13 +58,13 @@ public class Flashbang : MonoBehaviour
         }
 
         // trial dengan flashbang
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ActiveFlashBang();
+        // if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     ActiveFlashBang();
 
 
 
-        }
+        // }
     }
 
     public void ActiveFlashBang(){
