@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Tambahkan referensi ke SpriteRenderer
     public GameObject lampu;
     public PlayerItemData playerItemData;
+    private kerisEffect Stun;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -21,6 +22,7 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
+        Stun = GetComponent<kerisEffect>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); // Ambil komponen Animator dari GameObject ini
         spriteRenderer = GetComponent<SpriteRenderer>(); // Ambil komponen SpriteRenderer dari GameObject ini
@@ -40,7 +42,8 @@ public class playerController : MonoBehaviour
                 lampu.SetActive(false); // Matikan lampu saat crouch
             }else if(playerItemData.dapetKeris)
             {
-
+                Debug.Log("done");
+                Stun.TriggerStun();
             }else if(playerItemData.dapetKaca)
             {
                
