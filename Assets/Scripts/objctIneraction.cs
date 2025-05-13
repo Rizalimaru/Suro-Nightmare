@@ -12,7 +12,6 @@ public class objctIneraction : MonoBehaviour
     public Image itemIcon; // Ikon item
     public TextMeshProUGUI itemDescription; // Deskripsi item
     public GameObject canvasEToInteract;
-    public float delay = 2f; // Waktu delay sebelum menyembunyikan canvas
 
     // Dropdown di Inspector untuk memilih item
     public enum ItemType { DapetKafan, DapetKetis, DapetKaca }
@@ -31,10 +30,13 @@ public class objctIneraction : MonoBehaviour
         // Periksa input E hanya jika pemain berada di dalam trigger
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {   
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false; // Menyembunyikan sprite objek ini
+            canvasEToInteract.SetActive(false); // Menyembunyikan canvas interaksi
             canvasInteraction.SetActive(true);
             UpdateItemData();
             UpdatePlayerItemData();
-            StartCoroutine(HideCanvasAfterDelay(delay)); // Menyembunyikan canvas setelah 2 detik
+            StartCoroutine(HideCanvasAfterDelay(5f)); // Menyembunyikan canvas setelah 2 detik
         }
     }
 
