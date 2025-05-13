@@ -455,7 +455,7 @@ MonoBehaviour:
   - groupName: Stage3
     backgroundMusics:
     - {fileID: 3535162298225487777}
-    - {fileID: 3535162298225487777}
+    - {fileID: 3460452055225798832}
     originalVolume: 0
 --- !u!1 &5288714535537264289
 GameObject:

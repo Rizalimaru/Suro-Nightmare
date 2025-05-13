@@ -1,4 +1,8 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GlassFragment : MonoBehaviour
 {
@@ -7,8 +11,17 @@ public class GlassFragment : MonoBehaviour
     private GlassCollector manager;
     public GameObject interactText; // assign dari inspector atau pakai GetComponentInChildren()
 
+    public UnityEngine.UI.Image glassImage;
+
+    public string glassTextValue ; // Teks yang akan ditampilkan saat kaca ditemukan
+    public Sprite cermin;
+
 
     public GameObject glassSFXPrefab; // Tambahkan variabel untuk prefab SFX
+
+    // teks yang bisa diubah dari inspector
+
+    public GameObject uiGlassFound;
 
     void Start()
     {
@@ -24,16 +37,21 @@ public class GlassFragment : MonoBehaviour
             isPlayerNear = false;
             interactText.SetActive(false);
 
-
             if(glassSFXPrefab != null)
             {
                 Instantiate(glassSFXPrefab, transform.position, Quaternion.identity);
 
             }
-        }
-    }
+            }
 
-    void OnTriggerEnter2D(Collider2D other)
+
+            //StartCoroutine(HideGlassFoundUI()); // Mulai coroutine untuk menyembunyikan UI setelah beberapa detik
+
+        }
+
+
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -50,4 +68,6 @@ public class GlassFragment : MonoBehaviour
             interactText.SetActive(false);
         }
     }
+
+
 }
