@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
+using System.Collections;
 
 public class SembunyiLemari : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class SembunyiLemari : MonoBehaviour
     public TextMeshProUGUI hideTextUI;
 
     public BoxCollider2D [] kuntilanakCollider;
+
+    public GameObject lemari2d;
 
     public GameObject lampu2d;
 
@@ -27,23 +31,55 @@ public class SembunyiLemari : MonoBehaviour
         {
             isHiding = !isHiding;
 
-            var sr = player.GetComponent<SpriteRenderer>();
-            var rb = player.GetComponent<Rigidbody2D>();
-            var controller = player.GetComponent<playerController>();
-
-            sr.enabled = !isHiding;
-            controller.enabled = !isHiding;
-            lampu2d.SetActive(!isHiding);
-            foreach (BoxCollider2D collider in kuntilanakCollider)
-            {
-                if (collider != null) collider.enabled = !isHiding;
-            }
-
-            if (isHiding)
-                rb.velocity = Vector2.zero;
-
-            UpdateHideText();
+            // Jalankan coroutine untuk mengatur jeda
+            StartCoroutine(HandleHiding(isHiding));
         }
+    }
+
+    private IEnumerator HandleHiding(bool hide)
+    {
+        // Tampilkan lemari 2D terlebih dahulu
+        lemari2d.SetActive(true);
+
+        foreach (BoxCollider2D collider in kuntilanakCollider)
+        {
+            if (collider != null) collider.enabled = !hide;
+        }
+
+        // Tunggu selama 1 detik
+        yield return new WaitForSeconds(0.5f);
+
+        lemari2d.SetActive(false); // Sembunyikan lemari 2D setelah jeda
+
+        // Sembunyikan atau tampilkan player dan kontrol
+        var rb = player.GetComponent<Rigidbody2D>();
+        var controller = player.GetComponent<playerController>();
+
+        //matikan sprite renderer player
+        var spriteRenderer = player.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = !hide;
+        }
+
+        controller.enabled = !hide;
+        lampu2d.SetActive(!hide);
+
+ 
+
+        if (hide)
+        {
+            rb.velocity = Vector2.zero;
+        }
+
+        // Jika keluar dari lemari, sembunyikan lemari 2D
+        if (!hide)
+        {
+            lemari2d.SetActive(false);
+        }
+
+        // Perbarui teks UI
+        UpdateHideText();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -81,4 +117,5 @@ public class SembunyiLemari : MonoBehaviour
         else
             hideTextUI.text = "Tekan E untuk bersembunyi";
     }
+    
 }

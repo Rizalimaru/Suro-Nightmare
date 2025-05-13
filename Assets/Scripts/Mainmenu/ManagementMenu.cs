@@ -5,24 +5,19 @@ using UnityEngine.UI;
 
 public class ManagementMenu : MonoBehaviour
 {
-    public GameObject [] panels; // isinya tampilan menu, options dan kredit
-    // Start is called before the first frame update
+    public GameObject[] panels; // isinya tampilan menu, options dan kredit
+
     void Start()
     {
-
         panels[0].SetActive(true); // Menu utama aktif
         panels[1].SetActive(false); // Options tidak aktif
         panels[2].SetActive(false); // Kredit tidak aktif
 
-        AudioManager.Instance.PlayBackgroundMusicWithTransition("Mainmenu",0, 2f); // Memutar musik latar menu utama
-
-        
+        AudioManager.Instance.PlayBackgroundMusicWithTransition("Mainmenu", 0, 2f); // Memutar musik latar menu utama
     }
 
-    // Update is called once per frame
     void Update()
-    {  
-
+    {
         // Kalau panel indeks 1 atau 2 aktif, jika escape ditekan, kembali ke menu utama
         if (panels[1].activeSelf || panels[2].activeSelf)
         {
@@ -31,42 +26,44 @@ public class ManagementMenu : MonoBehaviour
                 BackToMenu();
             }
         }
-    
-        
     }
 
-    public void PlayGame(){
+    public void PlayGame()
+    {
         // Load scene berikutnya
-        AudioManager.Instance.PlaySFX("Mainmenu",0);
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Mainmenu", 1f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Stage 1");
-
     }
+
 
     public void OpenOptions()
     {
-        panels[1].SetActive(true);
-        AudioManager.Instance.PlaySFX("Mainmenu",0);
+        StartCoroutine(PlaySoundAndOpenPanel(1));
     }
 
     public void OpenKredit()
     {
-        AudioManager.Instance.PlaySFX("Mainmenu",0);
-        panels[1].SetActive(false);
-        panels[2].SetActive(true);
+        StartCoroutine(PlaySoundAndOpenPanel(2));
     }
+
     public void BackToMenu()
     {
-        AudioManager.Instance.PlaySFX("Mainmenu",0);
         panels[1].SetActive(false);
         panels[2].SetActive(false);
     }
 
     public void ExitGame()
     {
-        AudioManager.Instance.PlaySFX("Mainmenu",0);
         Application.Quit();
         Debug.Log("Exit Game");
     }
 
+    private IEnumerator PlaySoundAndOpenPanel(int panelIndex)
+    {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0); // Mainkan sound
+        yield return new WaitForSeconds(0.2f); // Tunggu durasi sound (sesuaikan durasi ini)
+        panels[1].SetActive(panelIndex == 1);
+        panels[2].SetActive(panelIndex == 2);
+    }
 }
