@@ -31,6 +31,8 @@ public class GlassCollector : MonoBehaviour
 
     public Sprite cermin2;
 
+    public GameObject musuhTerlihat;
+
    
     public string glassTextValueKaca ; // Teks yang akan ditampilkan saat kaca ditemukan
 
@@ -89,6 +91,8 @@ public class GlassCollector : MonoBehaviour
         if (collected >= totalFragments && fullMirror != null)
         {
             uiGlass.SetActive(false);
+
+            musuhTerlihat.SetActive(false);
             //Flashbang.instance.ActiveFlashBang();
 
             selesaiAmbilSemuaCermin.SetActive(true);
