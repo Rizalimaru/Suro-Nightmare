@@ -14,6 +14,7 @@ public class enemyGenderuwo : MonoBehaviour
     private bool isFacingRight = true;
     public Transform player;
     private bool isFollowingPlayer = false;
+    public Transform checkpoint; // Posisi checkpoint untuk mengembalikan pemain
 
     void Start()
     {
@@ -25,7 +26,6 @@ public class enemyGenderuwo : MonoBehaviour
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        //Debug.Log("Distance to Player: " + distanceToPlayer);
 
         // Jika bersentuhan dengan pemain dan pemain tidak crouch, follow player
         if (isFollowingPlayer)
@@ -81,6 +81,23 @@ public class enemyGenderuwo : MonoBehaviour
                 if (!playerController.isCrounching)
                 {
                     isFollowingPlayer = true;
+                }
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerController playerController = collision.GetComponent<playerController>();
+            if (playerController != null)
+            {
+                // Jika pemain tidak crouch, kembalikan ke checkpoint
+                if (!playerController.isCrounching)
+                {
+                    Debug.Log("Player sent back to checkpoint!");
+                    collision.transform.position = checkpoint.position; // Kembalikan pemain ke checkpoint
                 }
             }
         }

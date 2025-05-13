@@ -10,6 +10,9 @@ public class cameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
 
+    public float leftBoundary; // Batas kiri kamera
+    public float rightBoundary; // Batas kanan kamera
+
     private Vector3 defaultOffset; // Offset default kamera
     private float defaultOrthographicSize = 5f; // Ukuran default kamera ortogonal
     private float crouchOrthographicSize = 3f; // Ukuran kamera saat crouch
@@ -28,6 +31,17 @@ public class cameraFollow : MonoBehaviour
 
         // Pergerakan kamera mengikuti pemain
         Vector3 desiredPosition = target.position + offset;
+
+        // Batasi pergerakan kamera di dalam batas kiri dan kanan
+        if (desiredPosition.x < leftBoundary)
+        {
+            desiredPosition.x = leftBoundary;
+        }
+        else if (desiredPosition.x > rightBoundary)
+        {
+            desiredPosition.x = rightBoundary;
+        }
+
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.position = smoothedPosition;
 
