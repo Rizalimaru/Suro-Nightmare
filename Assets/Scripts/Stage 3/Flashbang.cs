@@ -10,6 +10,8 @@ public class Flashbang : MonoBehaviour
     private float timer = 0f;
     private bool isFlashing = false;
 
+    public GameObject flashSFXPrefab; // Tambahkan variabel untuk prefab SFX
+
     public GameObject kuntilanak; // Drag kuntilanak ke Inspector
 
     public GameObject whiteScreen; // Drag white screen ke Inspector
@@ -63,15 +65,18 @@ public class Flashbang : MonoBehaviour
 
     public void ActiveFlashBang(){
             // Mengaktifkan kuntilanak
+        Instantiate(flashSFXPrefab, transform.position, Quaternion.identity);
         kuntilanak.SetActive(false);
         TriggerFlash();
         StartCoroutine(RemoveWhiteScreen());
+
+        
     }
 
     private System.Collections.IEnumerator RemoveWhiteScreen()
     {
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         whiteScreen.SetActive(true);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3",1f);
     }

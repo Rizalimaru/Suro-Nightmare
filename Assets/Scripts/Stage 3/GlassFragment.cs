@@ -7,6 +7,9 @@ public class GlassFragment : MonoBehaviour
     private GlassCollector manager;
     public GameObject interactText; // assign dari inspector atau pakai GetComponentInChildren()
 
+
+    public GameObject glassSFXPrefab; // Tambahkan variabel untuk prefab SFX
+
     void Start()
     {
         manager = FindObjectOfType<GlassCollector>();
@@ -20,6 +23,13 @@ public class GlassFragment : MonoBehaviour
             manager.CollectFragment(gameObject);
             isPlayerNear = false;
             interactText.SetActive(false);
+
+
+            if(glassSFXPrefab != null)
+            {
+                Instantiate(glassSFXPrefab, transform.position, Quaternion.identity);
+
+            }
         }
     }
 

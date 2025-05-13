@@ -11,7 +11,7 @@ public class SembunyiLemari : MonoBehaviour
 
     public TextMeshProUGUI hideTextUI;
 
-    public BoxCollider2D kuntilanakCollider;
+    public BoxCollider2D [] kuntilanakCollider;
 
     void Start()
     {
@@ -31,7 +31,10 @@ public class SembunyiLemari : MonoBehaviour
 
             sr.enabled = !isHiding;
             controller.enabled = !isHiding;
-            kuntilanakCollider.enabled = !isHiding;
+            foreach (BoxCollider2D collider in kuntilanakCollider)
+            {
+                if (collider != null) collider.enabled = !isHiding;
+            }
 
             if (isHiding)
                 rb.velocity = Vector2.zero;
