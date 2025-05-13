@@ -40,7 +40,7 @@ public class enemyPocong : MonoBehaviour
         if (isStunned || player == null)
         {
             rb.velocity = Vector2.zero;
-            anim.SetBool("isChasing", true);
+            anim.SetBool("isChasing", false);
             return;
         }
 
