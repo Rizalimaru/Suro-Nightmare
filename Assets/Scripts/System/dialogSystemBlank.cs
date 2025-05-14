@@ -65,7 +65,7 @@ public class dialogSystemBlank : MonoBehaviour
             else
             {
                 // Semua GameObject selesai → pindah ke scene berikutnya
-                SceneManager.LoadScene(nextSceneName);
+                SceneController.instance.LoadScene(nextSceneName);
             }
         }
     }

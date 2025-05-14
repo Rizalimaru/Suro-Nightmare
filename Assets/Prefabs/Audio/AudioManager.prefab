@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bfa2acd266e14864891e55e0c0df00e8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -956,6 +956,10 @@ MonoBehaviour:
     soundEffects:
     - {fileID: 0}
     - {fileID: 0}
+  - groupName: Stage3
+    soundEffects:
+    - {fileID: 8192903938931885518}
+    - {fileID: 4068145436657262631}
   audioBackgroundMusicGroups:
   - groupName: Mainmenu
     backgroundMusics:
@@ -1145,7 +1149,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7310415775331743869, guid: 5590d51734428ca41bf1d41b8f0b2b9c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 938b346cee0c1d84bb7256e8ab1bb197, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

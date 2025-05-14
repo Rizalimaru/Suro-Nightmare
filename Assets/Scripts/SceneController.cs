@@ -10,6 +10,20 @@ public class SceneController : MonoBehaviour
     [SerializeField] Animator animatorSceneTransition;
     public string sceneToLoad;
 
+    public void Start()
+    {
+        // Periksa apakah instance sudah ada
+        if (instance == null)
+        {
+            instance = this; // Set instance jika belum ada
+            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject); // Hancurkan instance yang baru jika sudah ada instance lain
+        }
+    }
+
 
     public void LoadScene(string sceneName)
     {
@@ -20,10 +34,12 @@ public class SceneController : MonoBehaviour
     // Fungsi ini dipanggil untuk memulai transisi ke scene baru
     public IEnumerator StartSceneTransition(string sceneName)
     {
-        animatorSceneTransition.SetTrigger("SceneStart"); // Trigger animasi transisi
+        animatorSceneTransition.SetTrigger("SceneEnd"); // Trigger animasi transisi
 
-        yield return new WaitForSeconds(3f); // Tunggu selama 1 detik sebelum memuat scene baru
+        yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru
         SceneManager.LoadSceneAsync(sceneToLoad); // Muat scene baru
+
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneToLoad);
         animatorSceneTransition.SetTrigger("SceneStart");
     }
 
@@ -35,7 +51,7 @@ public class SceneController : MonoBehaviour
     IEnumerator LoadScene()
     {
         animatorSceneTransition.SetTrigger("SceneEnd");
-        yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru
+        yield return new WaitForSeconds(3f); // Tunggu selama 1 detik sebelum memuat scene baru
         SceneManager.LoadSceneAsync(sceneToLoad); // Muat scene baru
         animatorSceneTransition.SetTrigger("SceneStart");
     }

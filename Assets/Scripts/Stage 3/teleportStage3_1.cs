@@ -27,7 +27,7 @@ public class teleportStage3_1 : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.F) && detectTeleportStage3.isTeleporting == false )
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && detectTeleportStage3.isTeleporting == false )
         
         {
            detectTeleportStage3.isTeleporting = true;

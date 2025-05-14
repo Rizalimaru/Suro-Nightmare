@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -19,6 +20,8 @@ public class GlitchEffectSprite : MonoBehaviour
     private float _glitchupTime = 0.05f;
     private float _glitchdownTime = 0.05f;
     private float _flickerTime = 0.5f;
+
+
 
     void Start()
     {
@@ -93,5 +96,33 @@ public class GlitchEffectSprite : MonoBehaviour
         }
         else
             _material.SetFloat("displace", 0);
+    }
+
+
+    public void TriggerGlitch(float duration)
+    {
+        StartCoroutine(AnimateGlitch(duration));
+    }
+
+    private IEnumerator AnimateGlitch(float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            // Atur parameter glitch secara acak
+            intensity = Random.Range(0.2f, 0.8f);
+            flipIntensity = Random.Range(0.2f, 0.8f);
+            colorIntensity = Random.Range(0.2f, 0.8f);
+
+            yield return new WaitForSeconds(0.1f); // Ubah parameter setiap 0.1 detik
+        }
+
+        // Reset parameter glitch ke 0 setelah animasi selesai
+        intensity = 0f;
+        flipIntensity = 0f;
+        colorIntensity = 0f;
     }
 }

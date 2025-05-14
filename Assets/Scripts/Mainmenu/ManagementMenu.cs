@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ManagementMenu : MonoBehaviour
 {
     public GameObject[] panels; // isinya tampilan menu, options dan kredit
+    private bool isButtonPressed = false; // Flag untuk mencegah spamming tombol
 
     void Start()
     {
@@ -30,21 +31,33 @@ public class ManagementMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        if (isButtonPressed) return; // Cegah spamming tombol
+        isButtonPressed = true;
+
         // Load scene berikutnya
         AudioManager.Instance.PlaySFX("Mainmenu", 0);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Mainmenu", 1f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage 1");
-    }
+        SceneController.instance.LoadScene("Intro Story");
 
+        StartCoroutine(ResetButtonFlag());
+    }
 
     public void OpenOptions()
     {
+        if (isButtonPressed) return; // Cegah spamming tombol
+        isButtonPressed = true;
+
         StartCoroutine(PlaySoundAndOpenPanel(1));
+        StartCoroutine(ResetButtonFlag());
     }
 
     public void OpenKredit()
     {
+        if (isButtonPressed) return; // Cegah spamming tombol
+        isButtonPressed = true;
+
         StartCoroutine(PlaySoundAndOpenPanel(2));
+        StartCoroutine(ResetButtonFlag());
     }
 
     public void BackToMenu()
@@ -55,8 +68,13 @@ public class ManagementMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        if (isButtonPressed) return; // Cegah spamming tombol
+        isButtonPressed = true;
+
         Application.Quit();
         Debug.Log("Exit Game");
+
+        StartCoroutine(ResetButtonFlag());
     }
 
     private IEnumerator PlaySoundAndOpenPanel(int panelIndex)
@@ -65,5 +83,11 @@ public class ManagementMenu : MonoBehaviour
         yield return new WaitForSeconds(0.2f); // Tunggu durasi sound (sesuaikan durasi ini)
         panels[1].SetActive(panelIndex == 1);
         panels[2].SetActive(panelIndex == 2);
+    }
+
+    private IEnumerator ResetButtonFlag()
+    {
+        yield return new WaitForSeconds(0.5f); // Sesuaikan durasi ini jika diperlukan
+        isButtonPressed = false; // Reset flag setelah durasi tertentu
     }
 }
