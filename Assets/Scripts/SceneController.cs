@@ -10,31 +10,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] Animator animatorSceneTransition;
     public string sceneToLoad;
 
-    private void Start()
-    {
-        // Pastikan instance tidak ada sebelumnya
-        if (instance == null)
-        {
-            instance = this; // Inisialisasi instance
-            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
-        }
-        else
-        {
-            Destroy(gameObject); // Hancurkan objek ini jika sudah ada instance lain
-        }
-    }
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this; // Inisialisasi instance
-            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
-        }
-        else
-        {
-            Destroy(gameObject); // Hancurkan objek ini jika sudah ada instance lain
-        }
-    }
 
     public void LoadScene(string sceneName)
     {
@@ -47,7 +22,7 @@ public class SceneController : MonoBehaviour
     {
         animatorSceneTransition.SetTrigger("SceneStart"); // Trigger animasi transisi
 
-        yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru
+        yield return new WaitForSeconds(3f); // Tunggu selama 1 detik sebelum memuat scene baru
         SceneManager.LoadSceneAsync(sceneToLoad); // Muat scene baru
         animatorSceneTransition.SetTrigger("SceneStart");
     }
