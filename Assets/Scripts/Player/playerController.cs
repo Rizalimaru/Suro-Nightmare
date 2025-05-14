@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     public LayerMask groundLayer;
     public bool isCrounching = false;
     public bool canMove = true; // Variabel untuk mengontrol gerakan
+    public bool isInteracting = false; // Menyimpan status interaksi pemain
     private Animator animator; // Tambahkan variabel animator
     private SpriteRenderer spriteRenderer; // Tambahkan referensi ke SpriteRenderer
     public GameObject lampu;
