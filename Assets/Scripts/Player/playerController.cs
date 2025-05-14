@@ -46,7 +46,14 @@ public class playerController : MonoBehaviour
 
     void Update()
     {   
-        if (!canMove) return; // Jika tidak bisa bergerak, keluar dari fungsi
+        if (!canMove)
+        {   
+            AudioManager.Instance.SetVolume("PlayerMovement", 0); // Hentikan suara berjalan
+            return;
+        }else
+        {
+            AudioManager.Instance.SetVolume("PlayerMovement", 1); // Hentikan suara berjalan
+        }
 
         if (Input.GetKeyDown(KeyCode.F) && isGrounded)
         {   
@@ -132,7 +139,7 @@ public class playerController : MonoBehaviour
                     AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
                 }
                 else
-                {
+                {   
                     AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
                 }
 
