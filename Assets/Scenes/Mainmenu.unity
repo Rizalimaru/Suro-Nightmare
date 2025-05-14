@@ -6682,8 +6682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b28d77a47843441839be0e074d66ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderMasterVolume: {fileID: 165854164}
-  sliderBackgroundMusic: {fileID: 590640650}
+  sliderMasterVolume: {fileID: 590640650}
+  sliderBackgroundMusic: {fileID: 165854164}
   sliderSoundEffect: {fileID: 761853902}
   spritemute:
   - {fileID: 21300000, guid: 332f619fc835595498e8fa21ff5fdb8e, type: 3}

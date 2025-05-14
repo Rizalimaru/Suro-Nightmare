@@ -48,11 +48,7 @@ public class playerController : MonoBehaviour
     {   
         if (!canMove)
         {   
-            AudioManager.Instance.SetVolume("PlayerMovement", 0); // Hentikan suara berjalan
             return;
-        }else
-        {
-            AudioManager.Instance.SetVolume("PlayerMovement", 1); // Hentikan suara berjalan
         }
 
         if (Input.GetKeyDown(KeyCode.F) && isGrounded)
@@ -69,6 +65,7 @@ public class playerController : MonoBehaviour
             {
                 animator.SetTrigger("Keris");
                 Debug.Log("done");
+                AudioManager.Instance.StopSFX("PlayerMovement", 0);
                 AudioManager.Instance.PlaySFX("Stage2", 0);
             }else if(playerItemData.dapetKaca)
             {
@@ -88,6 +85,21 @@ public class playerController : MonoBehaviour
                 lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
             }else if(playerItemData.dapetKeris)
             {
+                if (Input.GetAxis("Horizontal") != 0)
+                {
+                    string currentScene = SceneManager.GetActiveScene().name;
+
+                    if (currentScene == "Stage 3")
+                    {
+                        AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
+                    }
+
+                    isWalkingSoundPlaying = true; // Set flag ke true
+                }
 
             }else if(playerItemData.dapetKaca)
             {
