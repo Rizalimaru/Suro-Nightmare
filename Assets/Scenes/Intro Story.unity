@@ -3452,13 +3452,13 @@ MonoBehaviour:
   - Damar
   - Nenek
   dialogLines:
-  - '"Nek kenapaa aku ga boleh main di halaman belakang??"'
-  - '"Karena halaman belakang rumah itu hutan, bahaya. Takut ada binatang buas"'
-  - '"Yahh, padahal Damar mau berpetualang" (sedikit murung)'
-  - '"Nanti kalo Damar udah gede, boleh kok berpetualang kemanapun yang Damar mauu"'
-  - '"Janjii yaa nekk (Damar mengangkat jari kelingkingnya)"'
-  - '"haha iyaa janjii (mengangkat jari kelingking). Sekarang dah malem, abis ini
-    sholat terus tidur biar cepet gede"'
+  - Nek kenapa aku ga boleh main di halaman belakang ?
+  - Karena halaman belakang rumah itu hutan, bahaya. Takut ada binatang buas.
+  - Yah, padahal Damar mau berpetualang (sedikit murung).
+  - Nanti kalo Damar udah gede, boleh kok berpetualang kemanapun yang Damar mau
+  - Janji ya nek (Damar mengangkat jari kelingkingnya).
+  - '"haha iya janji (mengangkat jari kelingking). Sekarang dah malem, abis ini sholat
+    terus tidur biar cepet gede"'
   typingSpeed: 0.03
   nextGameObject: {fileID: 913701211}
 --- !u!114 &8829244869311727188

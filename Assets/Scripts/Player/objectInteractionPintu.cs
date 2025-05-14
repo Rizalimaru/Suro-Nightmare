@@ -14,6 +14,8 @@ public class objectInteraction : MonoBehaviour
     public AudioSource chainSound;
     public AudioSource doorSound;
 
+    public GameObject objectiveUI;
+
     void Start()
     {
         interactionText.SetActive(false);
@@ -45,6 +47,7 @@ public class objectInteraction : MonoBehaviour
 
             if (barProgress.fillAmount >= 1)
             {   
+                objectiveUI.SetActive(false); // Menampilkan UI objective
                 // Lakukan aksi saat progress bar penuh
                 Debug.Log("Interaksi selesai!");
                 barProgress.fillAmount = 0; // Reset progress bar

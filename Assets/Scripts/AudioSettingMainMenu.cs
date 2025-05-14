@@ -30,6 +30,21 @@ public class AudioSettingMainMenu : MonoBehaviour
 
         Instance = this;
         
+                if (AudioManager.Instance != null)
+        {
+            InitializeSliders();
+            UpdateMuteButtonSprite();
+            UpdateMuteStatusText();
+            SetupSliderListeners();
+            
+            AudioManager.Instance.LoadVolumeSettings();
+
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager instance not found.");
+        }
+        
     }
 
     private void Awake()

@@ -92,4 +92,8 @@ public class ManagementMenu : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Sesuaikan durasi ini jika diperlukan
         isButtonPressed = false; // Reset flag setelah durasi tertentu
     }
+
+    public void bukaReferensi(){
+        Application.OpenURL("https://www.notion.so/References-1f3061b95c7380419ee9ea5207fcd01a");
+    }
 }

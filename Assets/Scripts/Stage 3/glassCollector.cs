@@ -45,10 +45,12 @@ public class GlassCollector : MonoBehaviour
 
         UpdateProgressText();
 
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 0);
 
 
-        AudioManager.Instance.PlayBackgroundMusicWithTransition2("Stage3",0, 1f,0.7f);
-        AudioManager.Instance.PlayBackgroundMusicWithTransition2("Stage3",1, 1f,0.7f);
+
+        AudioManager.Instance.PlayBackgroundMusicWithTransition2("Stage3",0, 1f,0.5f);
+        AudioManager.Instance.PlayBackgroundMusicWithTransition2("Stage3",1, 1f,0.5f);
     }
 
     public void CollectFragment(GameObject fragment)

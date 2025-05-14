@@ -32,6 +32,7 @@ public class kerisEffect : MonoBehaviour
     private IEnumerator TriggerStunWithAnimation()
     {   
         TriggerStun();
+        AudioManager.Instance.StopSFX("PlayerMovement", 0);
         // Nonaktifkan gerakan pemain
         playerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
         player.canMove = false;
@@ -49,6 +50,9 @@ public class kerisEffect : MonoBehaviour
         // Turunkan intensitas flashbangLight secara bertahap
         yield return StartCoroutine(ChangeLightIntensity(flashbangLight, 0f, 0.5f)); // Turun ke 0 dalam 0.5 detik
 
+
+        yield return new WaitUntil(() => Input.GetAxis("Horizontal") != 0);
+        AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
         // Aktifkan kembali gerakan pemain
         anim.SetBool("isWalking", true); // Set animator ke idle
         player.canMove = true;

@@ -247,6 +247,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &258656069
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/GlitchShader
+  m_Shader: {fileID: 4800000, guid: acee6a792c656ed4f9582087b0f34482, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DispTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorIntensity: 1
+    - _Intensity: 1
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1 &505003653
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,43 +381,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505003653}
   m_CullTransparentMesh: 1
---- !u!21 &859531357
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/GlitchShader
-  m_Shader: {fileID: 4800000, guid: acee6a792c656ed4f9582087b0f34482, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DispTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorIntensity: 1
-    - _Intensity: 1
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1 &920240105
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 859531357}
+  - {fileID: 258656069}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogText: {fileID: 7277814098603199766}
   dialogLines:
-  - '"Yasudahlah, yang penting mba Laras tidak apa apa"'
+  - Ya sudahlah, yang penting Mbak Laras tidak apa-apa
   typingSpeed: 0.03
   nextGameObject: {fileID: 1355756387}
   nextSceneName: 
@@ -2669,8 +2669,8 @@ MonoBehaviour:
   - Damar
   - Damar
   dialogLines:
-  - '"HHAHHHH!!"'
-  - '"oh ternyata semua cuma mimpi"'
+  - '"HAHHHH!!"'
+  - Oh ternyata semua cuma mimpi
   typingSpeed: 0.03
   nextGameObject: {fileID: 582816472082358344}
   hitamtransisi: {fileID: 505003653}

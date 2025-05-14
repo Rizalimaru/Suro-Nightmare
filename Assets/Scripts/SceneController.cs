@@ -36,9 +36,8 @@ public class SceneController : MonoBehaviour
             AudioManager.Instance.StopBackgroundMusicWithTransition("Stage1", 0);
         }
 
-        if(sceneToLoad == "Stage 3"){
-            AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 0);
-        }
+    
+            
         animatorSceneTransition.SetTrigger("SceneEnd"); // Trigger animasi transisi
 
         yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru
