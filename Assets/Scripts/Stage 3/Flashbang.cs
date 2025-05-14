@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
-using UnityEditor.SearchService;
 
 public class Flashbang : MonoBehaviour
 {

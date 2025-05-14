@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class kerisEffect : MonoBehaviour
 {
-    public KeyCode stunKey = KeyCode.F;
+    public KeyCode stunKey = KeyCode.E;
     public float stunRadius = 5f;
     public float stunDuration = 3f;
     public Light2D flashbangLight; // Referensi ke Light2D untuk flashbang
@@ -25,7 +25,6 @@ public class kerisEffect : MonoBehaviour
 
         if (Input.GetKeyDown(stunKey))
         {
-            AudioManager.Instance.StopSFX("PlayerMovement", 0);
             StartCoroutine(TriggerStunWithAnimation());
         }
     }
@@ -50,10 +49,7 @@ public class kerisEffect : MonoBehaviour
         // Turunkan intensitas flashbangLight secara bertahap
         yield return StartCoroutine(ChangeLightIntensity(flashbangLight, 0f, 0.5f)); // Turun ke 0 dalam 0.5 detik
 
-        yield return new WaitUntil(() => Input.GetAxis("Horizontal") != 0);
-
         // Aktifkan kembali gerakan pemain
-        AudioManager.Instance.PlaySFX("PlayerMovement", 0);
         anim.SetBool("isWalking", true); // Set animator ke idle
         player.canMove = true;
 

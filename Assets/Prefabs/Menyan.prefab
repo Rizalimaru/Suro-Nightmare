@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   interactRange: 1.5
+  playerController: {fileID: 0}
   interactKey: 101
   progressIncreaseSpeed: 1
   progressDecreaseSpeed: 0.5
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468814900549022058}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69eadf62f1a8070489171f944e6dd2ec, type: 3}
   m_Name: 
@@ -299,8 +300,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tekan "E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4d22952fbbf4dce408650fe205856214, type: 2}
-  m_sharedMaterial: {fileID: 8215612420139223175, guid: 4d22952fbbf4dce408650fe205856214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
+  m_sharedMaterial: {fileID: -151067831083078559, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -324,8 +325,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

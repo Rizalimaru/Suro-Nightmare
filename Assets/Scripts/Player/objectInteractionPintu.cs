@@ -11,6 +11,8 @@ public class objectInteraction : MonoBehaviour
     public Sprite pintuBuka;
     private Animator playerAnim;
     public GameObject barier;
+    public AudioSource chainSound;
+    public AudioSource doorSound;
 
     void Start()
     {
@@ -29,14 +31,14 @@ public class objectInteraction : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E))
             {   
-                AudioManager.Instance.PlaySFX("InteractionObject", 1);
+                chainSound.Play();
                 playerAnim.SetBool("isInteract", true);
                 interactionText.SetActive(false);
             }
 
             if(Input.GetKeyUp(KeyCode.E))
             {   
-                AudioManager.Instance.StopSFX("InteractionObject", 1);
+                chainSound.Stop();
                 playerAnim.SetBool("isInteract", false);
                 interactionText.SetActive(true);
             }
@@ -50,8 +52,8 @@ public class objectInteraction : MonoBehaviour
                 interactionText.SetActive(false);
                 barier.SetActive(false); // Menonaktifkan objek barier
                 SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-                AudioManager.Instance.PlaySFX("InteractionObject", 0);
-                AudioManager.Instance.StopSFX("InteractionObject", 1);
+                doorSound.Play();
+                chainSound.Stop();
                 playerAnim.SetBool("isInteract", false);
                 if(spriteRenderer != null)
                 {

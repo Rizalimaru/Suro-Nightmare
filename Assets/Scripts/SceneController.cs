@@ -31,6 +31,14 @@ public class SceneController : MonoBehaviour
     // Fungsi ini dipanggil untuk memulai transisi ke scene baru
     public IEnumerator StartSceneTransition(string sceneName)
     {
+
+        if(sceneToLoad == "Stage 2"){
+            AudioManager.Instance.StopBackgroundMusicWithTransition("Stage1", 0);
+        }
+
+        if(sceneToLoad == "Stage 3"){
+            AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 0);
+        }
         animatorSceneTransition.SetTrigger("SceneEnd"); // Trigger animasi transisi
 
         yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru

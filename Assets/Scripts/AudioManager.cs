@@ -513,6 +513,11 @@ public class AudioManager : MonoBehaviour
         PauseSoundEffectGroup("BossDukun");
     }
 
+    internal void PlaySFX(string v)
+    {
+        throw new System.NotImplementedException();
+    }
+
     #endregion
 
 }

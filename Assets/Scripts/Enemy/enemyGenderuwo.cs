@@ -17,6 +17,7 @@ public class enemyGenderuwo : MonoBehaviour
     // Audio
     public AudioSource stepSound; // AudioSource untuk suara langkah
     public AudioSource heartbeatSound; // AudioSource untuk suara heartbeat
+    public AudioSource genderuwoVoice;
     private bool isStepSoundPlaying = false; // Melacak status suara langkah
 
     //GameOve Logic
@@ -33,7 +34,7 @@ public class enemyGenderuwo : MonoBehaviour
 
     private void Start()
     {   
-        
+        AudioManager.Instance.PlayBackgroundMusicWithTransition("Stage1", 0, 2f);
         rb = GetComponent<Rigidbody2D>();
         //isFacingRight = false;
 
