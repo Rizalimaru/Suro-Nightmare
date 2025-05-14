@@ -2079,6 +2079,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614424499}
   m_CullTransparentMesh: 1
+--- !u!82 &617821977 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1580062990701891987, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+  m_PrefabInstance: {fileID: 997606688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &636644755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,6 +2303,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661874491}
   m_CullTransparentMesh: 1
+--- !u!82 &675861707 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8741984346525261369, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+  m_PrefabInstance: {fileID: 997606688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710541735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,6 +3512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1580062990701891987, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2580240765331791825, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3533344
@@ -3546,6 +3560,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[2].soundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 617821977}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[2].soundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 675861707}
+    - target: {fileID: 8741984346525261369, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741984346525261369, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4980725013373823180, guid: 5590d51734428ca41bf1d41b8f0b2b9c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

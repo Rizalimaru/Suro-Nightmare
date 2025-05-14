@@ -6331,11 +6331,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3937010888337364495, guid: 4d5d1d6bf0c16bd4886dc6966f6c4911, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5d1d6bf0c16bd4886dc6966f6c4911, type: 3}
+--- !u!114 &250124622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4641621975644537492, guid: 4d5d1d6bf0c16bd4886dc6966f6c4911, type: 3}
+  m_PrefabInstance: {fileID: 250124621}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807478b1c2d7d0439f64ae5f27626c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &250478460
 GameObject:
   m_ObjectHideFlags: 0
@@ -23725,10 +23740,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -28673,7 +28688,7 @@ MonoBehaviour:
   kuntilanak: {fileID: 1293134467}
   whiteScreen: {fileID: 219931684}
   globalVolume: {fileID: 737347204}
-  sceneController: {fileID: 0}
+  sceneController: {fileID: 250124622}
 --- !u!1 &1286016832
 GameObject:
   m_ObjectHideFlags: 0
