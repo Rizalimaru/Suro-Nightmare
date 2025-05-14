@@ -16,6 +16,9 @@ public class dialogSystem : MonoBehaviour
     [Header("Typing Effect")]
     [SerializeField] private float typingSpeed = 0.03f;
 
+    [Header("Aksi Selanjutnya")]
+    [SerializeField] private GameObject nextGameObject; // Objek yang akan diaktifkan setelah dialog selesai
+
     private int currentLine = 0;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
@@ -55,7 +58,12 @@ public class dialogSystem : MonoBehaviour
             // Dialog selesai
             dialogText.text = "";
             nameText.text = "";
-            gameObject.SetActive(false); // Atau aksi selanjutnya
+            gameObject.SetActive(false);
+
+            if (nextGameObject != null)
+            {
+                nextGameObject.SetActive(true); // Tampilkan objek berikutnya
+            }
         }
     }
 
@@ -74,4 +82,6 @@ public class dialogSystem : MonoBehaviour
         isTyping = false;
         currentLine++;
     }
+
+    
 }

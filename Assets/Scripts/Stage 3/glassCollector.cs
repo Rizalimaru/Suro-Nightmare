@@ -88,7 +88,7 @@ public class GlassCollector : MonoBehaviour
 
         Invoke("HideGlassUI", 2f); // Sembunyikan UI setelah 2 detik
 
-        if (collected >= totalFragments && fullMirror != null)
+        if (collected >= totalFragments )
         {
             uiGlass.SetActive(false);
 
@@ -136,7 +136,10 @@ public class GlassCollector : MonoBehaviour
 
     private IEnumerator WaitAndDisable()
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(5f);
+
+        AudioManager.Instance.PlaySFX("Stage3", 1);
+        yield return new WaitForSeconds(7f);
 
         playerItemData.dapetKaca = true;
         mainCamera.SetActive(true);

@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 
 public class Flashbang : MonoBehaviour
 {
+    public Transform player; // Drag Player ke Inspector
     public static Flashbang instance; // Singleton instance
     public Light2D flashLight;           // Drag Point Light 2D ke Inspector
     public float maxIntensity = 5f;      // Seberapa terang efeknya
@@ -28,6 +29,8 @@ public class Flashbang : MonoBehaviour
 
     public void TriggerFlash()
     {
+        // Memindahkan flashlight ke posisi player
+        flashLight.transform.position = player.position;
         timer = 0f;
         isFlashing = true;
     }
@@ -89,7 +92,7 @@ public class Flashbang : MonoBehaviour
     private System.Collections.IEnumerator RemoveWhiteScreen()
     {
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         whiteScreen.SetActive(true);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3",1f);
     }

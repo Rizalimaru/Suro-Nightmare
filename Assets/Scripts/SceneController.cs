@@ -5,12 +5,51 @@ using UnityEngine.SceneManagement; // Import SceneManagement untuk memuat scene
 
 public class SceneController : MonoBehaviour
 {
+
+    public static SceneController instance; // Instance dari SceneController
     [SerializeField] Animator animatorSceneTransition;
     public string sceneToLoad;
+
+    private void Start()
+    {
+        // Pastikan instance tidak ada sebelumnya
+        if (instance == null)
+        {
+            instance = this; // Inisialisasi instance
+            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
+        }
+        else
+        {
+            Destroy(gameObject); // Hancurkan objek ini jika sudah ada instance lain
+        }
+    }
     private void Awake()
     {
-        // Pastikan objek ini tidak dihancurkan saat pergantian scene
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this; // Inisialisasi instance
+            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
+        }
+        else
+        {
+            Destroy(gameObject); // Hancurkan objek ini jika sudah ada instance lain
+        }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        sceneToLoad = sceneName; // Set nama scene yang akan dimuat
+        StartCoroutine(StartSceneTransition(sceneToLoad)); // Panggil coroutine untuk transisi scene
+    }
+
+    // Fungsi ini dipanggil untuk memulai transisi ke scene baru
+    public IEnumerator StartSceneTransition(string sceneName)
+    {
+        animatorSceneTransition.SetTrigger("SceneStart"); // Trigger animasi transisi
+
+        yield return new WaitForSeconds(1f); // Tunggu selama 1 detik sebelum memuat scene baru
+        SceneManager.LoadSceneAsync(sceneToLoad); // Muat scene baru
+        animatorSceneTransition.SetTrigger("SceneStart");
     }
 
     public void NextScene()
