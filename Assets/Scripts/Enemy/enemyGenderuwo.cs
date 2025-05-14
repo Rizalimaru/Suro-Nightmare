@@ -23,6 +23,7 @@ public class enemyGenderuwo : MonoBehaviour
     public GameObject gameOverUI; // Referensi ke UI Game Over
     public Animator gameOverAnimator; // Referensi ke Animator untuk Game Over
     public playerController playerController; // Referensi ke skrip playerController
+    public GameObject tombolUlang; // Referensi ke tombol Ulang
 
     // Heartbeat logic
     public Transform player; // Referensi ke pemain
@@ -31,7 +32,8 @@ public class enemyGenderuwo : MonoBehaviour
     private float heartbeatDistanceThreshold = 10f; // Jarak maksimum untuk memulai heartbeat
 
     private void Start()
-    {
+    {   
+        
         rb = GetComponent<Rigidbody2D>();
         //isFacingRight = false;
 
@@ -112,11 +114,13 @@ public class enemyGenderuwo : MonoBehaviour
 
     IEnumerator GameOver()
     {   
+        tombolUlang.SetActive(false);
         gameOverUI.SetActive(true);
         gameOverAnimator.SetTrigger("gameOver");
         yield return new WaitForSeconds(2f); // Tunggu 2 detik sebelum menampilkan Game Over
+        tombolUlang.SetActive(true);
         AudioListener.volume = 0;
-        Time.timeScale = 0; // Hentikan permainan
+        //Time.timeScale = 0; // Hentikan permainan
         //hentikan semua suara
     }
 
@@ -124,16 +128,8 @@ public class enemyGenderuwo : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {   
-            if(playerController.isCrounching == true)
-            {
-                // Jika Genderuwo menyentuh pemain yang sedang jongkok, tidak melakukan apa-apa
-                return;
-            }
-            else
-            {
-                // Jika Genderuwo menyentuh pemain yang tidak jongkok, panggil GameOver
-                StartCoroutine(GameOver());
-            }
+            // Jika Genderuwo menyentuh pemain, panggil GameOver
+            StartCoroutine(GameOver());
         }
     }
 }

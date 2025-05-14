@@ -1222,11 +1222,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244217792}
   m_CullTransparentMesh: 1
---- !u!82 &306689004 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4856672339893352147, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-  m_PrefabInstance: {fileID: 997606688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &368890866
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,26 +3546,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioSFXGroups.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioSFXGroups.Array.data[4].groupName
-      value: Mainmenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioSFXGroups.Array.data[4].soundEffects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioSFXGroups.Array.data[4].soundEffects.Array.data[0]
-      value: 
-      objectReference: {fileID: 306689004}
-    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-      propertyPath: audioSFXGroups.Array.data[4].soundEffects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1359181494}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4448,11 +4423,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!82 &1359181494 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4068145436657262631, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
-  m_PrefabInstance: {fileID: 997606688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1360535273
 GameObject:
   m_ObjectHideFlags: 0
@@ -6798,6 +6768,7 @@ MonoBehaviour:
   - {fileID: 1064681283}
   - {fileID: 380783497}
   - {fileID: 1003523538}
+  sceneController: {fileID: 2101991907}
 --- !u!4 &1882264754
 Transform:
   m_ObjectHideFlags: 0
@@ -7361,6 +7332,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091576165}
   m_CullTransparentMesh: 1
+--- !u!114 &2101991907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4641621975644537492, guid: 4d5d1d6bf0c16bd4886dc6966f6c4911, type: 3}
+  m_PrefabInstance: {fileID: 873581274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807478b1c2d7d0439f64ae5f27626c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2115716675
 GameObject:
   m_ObjectHideFlags: 0

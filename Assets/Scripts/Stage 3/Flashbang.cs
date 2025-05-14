@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using UnityEditor.SearchService;
 
 public class Flashbang : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Flashbang : MonoBehaviour
 
     public Volume globalVolume; // Drag Global Volume di Inspector
     private Vignette vignette; // Referensi ke efek vignette
+
+    public SceneController sceneController; // Drag SceneController ke Inspector
 
     void Start()
     {
@@ -91,9 +94,11 @@ public class Flashbang : MonoBehaviour
 
     private System.Collections.IEnumerator RemoveWhiteScreen()
     {
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3",2f);
         
         yield return new WaitForSeconds(3f);
         whiteScreen.SetActive(true);
-        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3",1f);
+        sceneController.LoadScene("EndingBro");
+        
     }
 }

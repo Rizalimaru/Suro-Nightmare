@@ -2036,6 +2036,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4641621975644537492, guid: 4d5d1d6bf0c16bd4886dc6966f6c4911, type: 3}
+      propertyPath: sceneToLoad
+      value: Stage 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

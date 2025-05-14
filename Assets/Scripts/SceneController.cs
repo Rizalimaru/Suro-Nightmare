@@ -16,12 +16,9 @@ public class SceneController : MonoBehaviour
         if (instance == null)
         {
             instance = this; // Set instance jika belum ada
-            DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
+            //DontDestroyOnLoad(gameObject); // Jangan hancurkan objek ini saat memuat scene baru
         }
-        else if (instance != this)
-        {
-            Destroy(gameObject); // Hancurkan instance yang baru jika sudah ada instance lain
-        }
+
     }
 
 

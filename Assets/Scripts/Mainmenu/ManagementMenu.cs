@@ -8,6 +8,8 @@ public class ManagementMenu : MonoBehaviour
     public GameObject[] panels; // isinya tampilan menu, options dan kredit
     private bool isButtonPressed = false; // Flag untuk mencegah spamming tombol
 
+    public SceneController sceneController; // Referensi ke SceneController
+
     void Start()
     {
         panels[0].SetActive(true); // Menu utama aktif
@@ -37,7 +39,7 @@ public class ManagementMenu : MonoBehaviour
         // Load scene berikutnya
         AudioManager.Instance.PlaySFX("Mainmenu", 0);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Mainmenu", 1f);
-        SceneController.instance.LoadScene("Intro Story");
+        sceneController.LoadScene("Intro Story");
 
         StartCoroutine(ResetButtonFlag());
     }
