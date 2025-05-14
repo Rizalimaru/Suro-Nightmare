@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
-public class dialogSystemBlank : MonoBehaviour
+public class dialogSystemDiner : MonoBehaviour
 {
     [Header("UI Komponen")]
     [SerializeField] private TMP_Text dialogText;
+    [SerializeField] private TMP_Text nameText;
 
     [Header("Dialog")]
+    [SerializeField] private string[] nameLines;
     [TextArea(3, 5)]
     [SerializeField] private string[] dialogLines;
 
@@ -16,8 +17,7 @@ public class dialogSystemBlank : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.03f;
 
     [Header("Aksi Selanjutnya")]
-    [SerializeField] private GameObject nextGameObject;
-    [SerializeField] private string nextSceneName;
+    [SerializeField] private GameObject nextGameObject; // Objek yang akan diaktifkan setelah dialog selesai
 
     private int currentLine = 0;
     private bool isTyping = false;
@@ -26,7 +26,7 @@ public class dialogSystemBlank : MonoBehaviour
     void Start()
     {
         ShowNextLine();
-
+        AudioManager.Instance.PlayBackgroundMusicWithTransition("Intro",0, 1f); // Ganti dengan nama musik yang sesuai
     }
 
     void Update()
@@ -37,6 +37,7 @@ public class dialogSystemBlank : MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
                 dialogText.text = dialogLines[currentLine];
+                nameText.text = nameLines[currentLine];
                 isTyping = false;
                 currentLine++;
             }
@@ -49,41 +50,32 @@ public class dialogSystemBlank : MonoBehaviour
 
     void ShowNextLine()
     {
-        if (currentLine < dialogLines.Length)
+        if (currentLine < dialogLines.Length && currentLine < nameLines.Length)
         {
-            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine]));
+            typingCoroutine = StartCoroutine(TypeLine(dialogLines[currentLine], nameLines[currentLine]));
         }
         else
         {
             // Dialog selesai
             dialogText.text = "";
-            gameObject.SetActive(false); // Atau aksi selanjutnya
+            nameText.text = "";
+            gameObject.SetActive(false);
 
             if (nextGameObject != null)
             {
                 nextGameObject.SetActive(true); // Tampilkan objek berikutnya
-            }
-            else
-            {
-                // Jika nama scene Stage 1 maka akan disable
-                // semua GameObject yang ada di scene ini
-                if (nextSceneName == "Stage 1")
-                {
-                    AudioManager.Instance.StopBackgroundMusicWithTransition("Intro2", 1f);
-          
-                }
- 
-                // Semua GameObject selesai → pindah ke scene berikutnya
-                SceneController.instance.LoadScene(nextSceneName);
+                AudioManager.Instance.StopBackgroundMusicWithTransition("Intro", 1f);
+                AudioManager.Instance.PlayBackgroundMusicWithTransition("Intro2",0, 1f); // Ganti dengan nama musik yang sesuai
             }
         }
     }
 
-    IEnumerator TypeLine(string dialog)
+    IEnumerator TypeLine(string dialog, string speaker)
     {
         isTyping = true;
         dialogText.text = "";
- 
+        nameText.text = speaker;
+
         foreach (char letter in dialog)
         {
             dialogText.text += letter;
@@ -93,4 +85,6 @@ public class dialogSystemBlank : MonoBehaviour
         isTyping = false;
         currentLine++;
     }
+
+    
 }

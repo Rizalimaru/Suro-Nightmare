@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class dialogSystemBlank : MonoBehaviour
+public class dialogSystemBlankMysterious : MonoBehaviour
 {
     [Header("UI Komponen")]
     [SerializeField] private TMP_Text dialogText;
@@ -26,7 +26,6 @@ public class dialogSystemBlank : MonoBehaviour
     void Start()
     {
         ShowNextLine();
-
     }
 
     void Update()
@@ -65,14 +64,6 @@ public class dialogSystemBlank : MonoBehaviour
             }
             else
             {
-                // Jika nama scene Stage 1 maka akan disable
-                // semua GameObject yang ada di scene ini
-                if (nextSceneName == "Stage 1")
-                {
-                    AudioManager.Instance.StopBackgroundMusicWithTransition("Intro2", 1f);
-          
-                }
- 
                 // Semua GameObject selesai → pindah ke scene berikutnya
                 SceneController.instance.LoadScene(nextSceneName);
             }

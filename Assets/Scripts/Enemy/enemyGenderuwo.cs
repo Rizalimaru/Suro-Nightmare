@@ -128,8 +128,14 @@ public class enemyGenderuwo : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {   
-            // Jika Genderuwo menyentuh pemain, panggil GameOver
-            StartCoroutine(GameOver());
+            if(playerController.isCrounching)
+            {
+                return;
+            }else{
+
+                StartCoroutine(GameOver());
+            }            // Jika Genderuwo menyentuh pemain, panggil GameOver
+            
         }
     }
 }

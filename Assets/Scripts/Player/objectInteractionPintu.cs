@@ -51,6 +51,7 @@ public class objectInteraction : MonoBehaviour
                 barier.SetActive(false); // Menonaktifkan objek barier
                 SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
                 AudioManager.Instance.PlaySFX("InteractionObject", 0);
+                AudioManager.Instance.StopSFX("InteractionObject", 1);
                 playerAnim.SetBool("isInteract", false);
                 if(spriteRenderer != null)
                 {

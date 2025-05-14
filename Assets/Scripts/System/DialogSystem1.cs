@@ -64,6 +64,12 @@ public class DialogSystem1 : MonoBehaviour
             
             StartCoroutine(ShowNextGameObjectAfterDelay(2f));
 
+            if(nextGameObject.name == "Mamah")
+            {
+                AudioManager.Instance.StopBackgroundMusicWithTransition("End", 1f);
+            }
+  
+
 
 
         }

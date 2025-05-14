@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -61,6 +62,7 @@ public class playerController : MonoBehaviour
             {
                 animator.SetTrigger("Keris");
                 Debug.Log("done");
+                AudioManager.Instance.PlaySFX("Stage2", 0);
             }else if(playerItemData.dapetKaca)
             {
                Flashbang.instance.ActiveFlashBang();
@@ -116,14 +118,24 @@ public class playerController : MonoBehaviour
             animator.SetTrigger("Jump"); // Set animator ke jump
         }
 
-        // Logika untuk suara berjalan
+    // Logika untuk suara berjalan
         if (Input.GetAxis("Horizontal") != 0 && !isCrounching)
         {
             animator.SetBool("isWalking", true); // Set animator ke running
 
             if (!isWalkingSoundPlaying) // Hanya mainkan suara jika belum diputar
             {
-                AudioManager.Instance.PlaySFX("PlayerMovement", 0);
+                string currentScene = SceneManager.GetActiveScene().name;
+
+                if (currentScene == "Stage 3")
+                {
+                    AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
+                }
+
                 isWalkingSoundPlaying = true;
             }
         }
@@ -133,7 +145,17 @@ public class playerController : MonoBehaviour
 
             if (isWalkingSoundPlaying) // Hanya hentikan suara jika sedang diputar
             {
-                AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                string currentScene = SceneManager.GetActiveScene().name;
+
+                if (currentScene == "Stage 3")
+                {
+                    AudioManager.Instance.StopSFX("PlayerMovement", 3); // Hentikan SFX untuk Stage3
+                }
+                else
+                {
+                    AudioManager.Instance.StopSFX("PlayerMovement", 0); // Hentikan SFX default
+                }
+
                 isWalkingSoundPlaying = false;
             }
         }

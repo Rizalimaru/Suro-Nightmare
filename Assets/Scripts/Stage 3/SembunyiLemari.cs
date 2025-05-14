@@ -32,7 +32,11 @@ public class SembunyiLemari : MonoBehaviour
     {
         if (canHide && Input.GetKeyDown(KeyCode.E) && isHidingCoroutineRunning == false)
         {
+            AudioManager.Instance.StopSFX("PlayerMovement", 3);
             isHidingCoroutineRunning = true;
+
+            
+           
 
 
             isHiding = !isHiding;
@@ -57,6 +61,7 @@ public class SembunyiLemari : MonoBehaviour
         
         // Tampilkan lemari 2D terlebih dahulu
         lemari2d.SetActive(true);
+        AudioManager.Instance.PlaySFX("Stage3", 2); // buka lemari
 
 
         foreach (BoxCollider2D collider in kuntilanakCollider)
@@ -73,6 +78,7 @@ public class SembunyiLemari : MonoBehaviour
 
         isHidingCoroutineRunning = false;
         lemari2d.SetActive(false); // Sembunyikan lemari 2D setelah jeda
+         AudioManager.Instance.PlaySFX("Stage3", 3); //tutup lemar
 
         // Sembunyikan atau tampilkan player dan kontrol
 

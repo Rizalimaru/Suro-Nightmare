@@ -8,6 +8,8 @@ public class nextGameObj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        AudioManager.Instance.PlaySFX("Intro",0);
         
     }
 
