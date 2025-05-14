@@ -16,7 +16,7 @@ public class ManagementMenu : MonoBehaviour
         panels[1].SetActive(false); // Options tidak aktif
         panels[2].SetActive(false); // Kredit tidak aktif
 
-        AudioManager.Instance.PlayBackgroundMusicWithTransition("Mainmenu", 0, 2f); // Memutar musik latar menu utama
+        AudioManager.Instance.PlayBackgroundMusicWithTransition2("Mainmenu", 0,2f, 0.7f); // Memutar musik latar menu utama
     }
 
     void Update()

@@ -4364,6 +4364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4856672339893352147, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: m_Volume
+      value: 0.558
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6184,7 +6188,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1882264753}
         m_TargetAssemblyTypeName: ManagementMenu, Assembly-CSharp
-        m_MethodName: OpenKredit
+        m_MethodName: bukaReferensi
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
