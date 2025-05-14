@@ -59,11 +59,17 @@ public class menyanInteraction : MonoBehaviour
             {
                 anim.SetBool("isInteract", true);
                 currentProgress += progressIncreaseSpeed * Time.deltaTime;
+
+                // Set isInteracting ke true saat pemain mulai berinteraksi
+                player.GetComponent<playerController>().isInteracting = true;
             }
             else
             {
                 anim.SetBool("isInteract", false);
                 currentProgress -= progressDecreaseSpeed * Time.deltaTime;
+
+                // Set isInteracting ke false saat pemain berhenti berinteraksi
+                player.GetComponent<playerController>().isInteracting = false;
             }
 
             currentProgress = Mathf.Clamp(currentProgress, 0f, requiredProgress);
@@ -78,6 +84,9 @@ public class menyanInteraction : MonoBehaviour
         {
             progressBarUI.SetActive(false);
             InteractionHint.SetActive(false);
+
+            // Pastikan isInteracting diatur ke false jika pemain keluar dari jangkauan
+            player.GetComponent<playerController>().isInteracting = false;
         }
     }
 

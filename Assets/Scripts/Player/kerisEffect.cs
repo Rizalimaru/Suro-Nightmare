@@ -15,6 +15,12 @@ public class kerisEffect : MonoBehaviour
 
     void Update()
     {
+        // Cek apakah pemain sedang berinteraksi
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().isInteracting)
+        {
+            return; // Jangan lakukan apa-apa jika pemain sedang berinteraksi
+        }
+
         if (Input.GetKeyDown(stunKey))
         {
             anim.SetTrigger("Keris");

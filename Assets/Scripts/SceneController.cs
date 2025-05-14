@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     // Fungsi ini dipanggil untuk memulai transisi ke scene baru
     public IEnumerator StartSceneTransition(string sceneName)
     {
-        animatorSceneTransition.SetTrigger("SceneStart"); // Trigger animasi transisi
+        animatorSceneTransition.SetTrigger("SceneEnd"); // Trigger animasi transisi
 
         yield return new WaitForSeconds(3f); // Tunggu selama 1 detik sebelum memuat scene baru
         SceneManager.LoadSceneAsync(sceneToLoad); // Muat scene baru
