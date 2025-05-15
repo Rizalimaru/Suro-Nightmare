@@ -10800,7 +10800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tekan " E " Untuk Naik Ke Lantai 2
+  m_text: Tekan " E " Untuk Turun Ke Lantai 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
   m_sharedMaterial: {fileID: -151067831083078559, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
@@ -12335,7 +12335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tekan " E " Untuk Naik Ke Lantai 2
+  m_text: Tekan " E " Untuk Naik Ke Lantai 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
   m_sharedMaterial: {fileID: -151067831083078559, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
@@ -41905,7 +41905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tekan " E " Untuk Naik Ke Lantai 2
+  m_text: Tekan " E " Untuk Turun Ke Lantai 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
   m_sharedMaterial: {fileID: -151067831083078559, guid: 5448894fa53ec4d4ebdab2cbcb7055e0, type: 2}
