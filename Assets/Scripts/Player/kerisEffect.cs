@@ -8,11 +8,13 @@ public class kerisEffect : MonoBehaviour
     public float stunRadius = 5f;
     public float stunDuration = 3f;
     public Light2D flashbangLight; // Referensi ke Light2D untuk flashbang
+    private playerController playerController; // Referensi ke playerController
 
     private Animator anim;
     void Start()
     {
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
     }
 
     void Update()
@@ -24,7 +26,11 @@ public class kerisEffect : MonoBehaviour
         }
 
         if (Input.GetKeyDown(stunKey))
-        {
+        {   
+            if(playerController.isInteracting) 
+            {
+                return; // Jangan lakukan apa-apa jika pemain sedang berinteraksi
+            }
             StartCoroutine(TriggerStunWithAnimation());
         }
     }
