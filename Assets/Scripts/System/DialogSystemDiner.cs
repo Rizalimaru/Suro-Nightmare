@@ -59,7 +59,6 @@ public class dialogSystemDiner : MonoBehaviour
             // Dialog selesai
             dialogText.text = "";
             nameText.text = "";
-            gameObject.SetActive(false);
 
             if (nextGameObject != null)
             {
@@ -86,5 +85,4 @@ public class dialogSystemDiner : MonoBehaviour
         currentLine++;
     }
 
-    
 }
