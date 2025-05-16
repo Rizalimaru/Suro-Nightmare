@@ -70,11 +70,12 @@ public class dialogSystemBlank : MonoBehaviour
                 if (nextSceneName == "Stage 1")
                 {
                     AudioManager.Instance.StopBackgroundMusicWithTransition("Intro2", 1f);
+                    SceneController.instance.LoadScene(nextSceneName);
           
                 }
  
                 // Semua GameObject selesai → pindah ke scene berikutnya
-                SceneController.instance.LoadScene(nextSceneName);
+                
             }
         }
     }

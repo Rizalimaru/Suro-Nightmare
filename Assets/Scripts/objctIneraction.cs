@@ -54,10 +54,11 @@ public class objctIneraction : MonoBehaviour
         {
             case ItemType.DapetKafan:
                 playerItemData.dapetKafan = true;
+                AudioManager.Instance.PlaySFX("PlayerMovement",1);
                 break;
             case ItemType.DapetKetis:
                 // Aktifkan efek keris biar gg bos 
-
+                AudioManager.Instance.PlaySFX("Stage2", 0);
                 kerisEffect.enabled = true;
                 playerItemData.dapetKeris = true;
                 break;
