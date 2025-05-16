@@ -3800,7 +3800,15 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[0].soundEffects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
       propertyPath: audioSFXGroups.Array.data[0].soundEffects.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[0].soundEffects.Array.data[5]
       value: 
       objectReference: {fileID: 1628171393}
     - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
@@ -3812,7 +3820,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 447768436}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6810952314885162743, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
@@ -8292,6 +8301,10 @@ PrefabInstance:
       propertyPath: globalVolume
       value: 
       objectReference: {fileID: 1646879861}
+    - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+      propertyPath: jumpSFXPrefab
+      value: 
+      objectReference: {fileID: 7328783108620601442, guid: b6d88c627d7a2104cbf4669a5764dbc4, type: 3}
     - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: playerItemData
       value: 
