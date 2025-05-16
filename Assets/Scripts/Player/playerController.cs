@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour
     
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
     public float runMultiplier = 1.5f; // Faktor pengali kecepatan lari
