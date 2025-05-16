@@ -30,10 +30,29 @@ public class menyanInteraction : MonoBehaviour
     private progressObjektif Progress;
     private spawnerPocong Pocong;
     private Animator anim;
+    private playerController playerScript;
 
     void Start()
     {
-        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        // Coba auto-cari player jika belum diset manual
+        if (player == null)
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+                player = playerObject.transform;
+        }
+
+        // Ambil playerScript dari player
+        if (player != null)
+        {
+            playerScript = player.GetComponent<playerController>();
+            anim = player.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogWarning("Player tidak ditemukan! Pastikan GameObject bertag 'Player' ada di scene.");
+        }
+
         Progress = FindObjectOfType<progressObjektif>();
         Pocong = GetComponent<spawnerPocong>();
 
@@ -47,6 +66,8 @@ public class menyanInteraction : MonoBehaviour
 
     void Update()
     {
+        if (player == null || playerScript == null) return;
+
         float distance = Vector2.Distance(transform.position, player.position);
         isInRange = distance < interactRange;
 
@@ -58,18 +79,18 @@ public class menyanInteraction : MonoBehaviour
             if (Input.GetKey(interactKey))
             {
                 anim.SetBool("isInteract", true);
-                currentProgress += progressIncreaseSpeed * Time.deltaTime;
+                // playerScript.canMove = false;  // Nonaktifkan gerakan
+                playerScript.isInteracting = true;
 
-                // Set isInteracting ke true saat pemain mulai berinteraksi
-                player.GetComponent<playerController>().isInteracting = true;
+                currentProgress += progressIncreaseSpeed * Time.deltaTime;
             }
             else
             {
                 anim.SetBool("isInteract", false);
-                currentProgress -= progressDecreaseSpeed * Time.deltaTime;
+                // playerScript.canMove = true;   // Aktifkan kembali gerakan
+                playerScript.isInteracting = false;
 
-                // Set isInteracting ke false saat pemain berhenti berinteraksi
-                player.GetComponent<playerController>().isInteracting = false;
+                currentProgress -= progressDecreaseSpeed * Time.deltaTime;
             }
 
             currentProgress = Mathf.Clamp(currentProgress, 0f, requiredProgress);
@@ -85,8 +106,8 @@ public class menyanInteraction : MonoBehaviour
             progressBarUI.SetActive(false);
             InteractionHint.SetActive(false);
 
-            // Pastikan isInteracting diatur ke false jika pemain keluar dari jangkauan
-            player.GetComponent<playerController>().isInteracting = false;
+            if (playerScript != null)
+                playerScript.isInteracting = false;
         }
     }
 
@@ -99,15 +120,12 @@ public class menyanInteraction : MonoBehaviour
         anim.SetBool("isInteract", false);
         Destroy(gameObject);
 
-        if (!isMenyanOn)
-            menyanOnVFX.Stop();
-            menyanOffVFX.Play();
+        if (menyanOnVFX != null) menyanOnVFX.Stop();
+        if (menyanOffVFX != null) menyanOffVFX.Play();
 
-        // Tambah progress objektif
         if (Progress != null)
             Progress.AddProgress();
 
-        // Hancurkan Pocong yang di-spawn oleh spawner ini
         if (Pocong != null && Pocong.spawnedPocong != null)
             Destroy(Pocong.spawnedPocong);
 

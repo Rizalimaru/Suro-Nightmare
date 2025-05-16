@@ -6,12 +6,15 @@ using System.Collections.Generic;
 
 public class KuntilanakMerahPatrol : MonoBehaviour
 {
+    //GameOve Logic
+    public GameObject gameOverUI; // Referensi ke UI Game Over
+    public Animator gameOverAnimator; // Referensi ke Animator untuk Game Over
+    public playerController playerController; // Referensi ke skrip playerController
+    public GameObject tombolUlang; // Referensi ke tombol Ulang
 
     public static KuntilanakMerahPatrol instance;
     public Transform[] waypoints;
     public float speed = 2f;
-    
-
 
     public Transform spawnPoint;        // Tempat player akan dipindahkan saat kena kuntilanak
     public string playerTag = "Player"; // Pastikan player pakai tag ini
@@ -88,6 +91,7 @@ public class KuntilanakMerahPatrol : MonoBehaviour
         {
             Debug.Log("KENA LU");
             GameObject player = other.gameObject;
+            
 
             // Cek apakah player sedang bersembunyi
             SembunyiLemari sembunyi = player.GetComponent<SembunyiLemari>();
@@ -102,11 +106,23 @@ public class KuntilanakMerahPatrol : MonoBehaviour
             {
                 myCollider.enabled = false; // Disable collider kuntilanak
                 //animasi transisi Hehe
-                
-                teleportStage3_1.teleportTransition();
-                StartCoroutine(WaitForSeconds(2f));
+                StartCoroutine(GameOver());
+                // teleportStage3_1.teleportTransition();
+                // StartCoroutine(WaitForSeconds(2f));
             }
         }
+    }
+
+    public IEnumerator GameOver()
+    {   
+        tombolUlang.SetActive(false);
+        gameOverUI.SetActive(true);
+        gameOverAnimator.SetTrigger("gameOver");
+        yield return new WaitForSeconds(2f); // Tunggu 2 detik sebelum menampilkan Game Over
+        tombolUlang.SetActive(true);
+        AudioListener.volume = 0;
+        //Time.timeScale = 0; // Hentikan permainan
+        //hentikan semua suara
     }
 
     IEnumerator WaitForSeconds(float seconds)
