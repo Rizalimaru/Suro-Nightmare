@@ -69,10 +69,8 @@ public class playerController : MonoBehaviour
                 AudioManager.Instance.PlaySFX("PlayerMovement",1);
             }else if(playerItemData.dapetKeris)
             {
-                animator.SetTrigger("Keris");
-                Debug.Log("done");
-                AudioManager.Instance.StopSFX("PlayerMovement", 0);
-                AudioManager.Instance.PlaySFX("Stage2", 0);
+
+
             }else if(playerItemData.dapetKaca)
             {
                Flashbang.instance.ActiveFlashBang();

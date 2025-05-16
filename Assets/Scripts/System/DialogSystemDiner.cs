@@ -63,6 +63,7 @@ public class dialogSystemDiner : MonoBehaviour
             if (nextGameObject != null)
             {
                 nextGameObject.SetActive(true); // Tampilkan objek berikutnya
+                gameObject.SetActive(false); // Sembunyikan dialog
                 AudioManager.Instance.StopBackgroundMusicWithTransition("Intro", 1f);
                 AudioManager.Instance.PlayBackgroundMusicWithTransition("Intro2",0, 1f); // Ganti dengan nama musik yang sesuai
             }
