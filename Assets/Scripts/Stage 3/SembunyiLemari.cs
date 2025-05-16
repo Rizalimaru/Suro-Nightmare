@@ -55,6 +55,7 @@ public class SembunyiLemari : MonoBehaviour
 
         // Stop semua animasi player
         playerAnim.SetBool("isWalking", false);
+        playerAnim.SetBool("isRunning", false);
 
         controller.enabled = false; // Nonaktifkan kontrol player saat bersembunyi
 
@@ -127,12 +128,16 @@ public class SembunyiLemari : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            canHide = false;
+            // Jangan ubah canHide jika pemain sedang bersembunyi
+            if (!isHiding)
+            {
+                canHide = false;
 
-            if (hideTextUI != null)
-                hideTextUI.gameObject.SetActive(false);
+                if (hideTextUI != null)
+                    hideTextUI.gameObject.SetActive(false);
+            }
         }
-    }
+}
 
     void UpdateHideText()
     {

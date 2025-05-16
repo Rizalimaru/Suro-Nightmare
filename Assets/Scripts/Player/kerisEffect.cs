@@ -36,7 +36,7 @@ public class kerisEffect : MonoBehaviour
         }
 
         // Cek apakah tombol stun ditekan dan stun tidak sedang berlangsung
-        if (Input.GetKeyDown(stunKey) && !isUseKeris)
+        if (Input.GetKeyDown(stunKey) && !isUseKeris && playerController.isGrounded)
         {
             StartCoroutine(TriggerStunWithAnimation());
         }
