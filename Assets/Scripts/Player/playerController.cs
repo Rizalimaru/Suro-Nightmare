@@ -29,6 +29,8 @@ public class playerController : MonoBehaviour
     private bool isGrounded;
     private bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
+    public float runMultiplier = 1.5f; // Faktor pengali kecepatan lari
+
     void Start()
     {   
 
@@ -119,7 +121,20 @@ public class playerController : MonoBehaviour
         if (!isCrounching)
         {
             float move = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+            float speed = moveSpeed;
+
+            // Cek apakah tombol Shift ditekan dan player sedang grounded
+            bool isRunning = Input.GetKey(KeyCode.LeftShift) && isGrounded && move != 0;
+
+            // Set animasi run sesuai status isRunning
+            animator.SetBool("isRunning", isRunning);
+
+            if (isRunning)
+            {
+                speed *= runMultiplier;
+            }
+
+            rb.velocity = new Vector2(move * speed, rb.velocity.y);
 
             // Flip sprite berdasarkan arah pergerakan
             if (move < 0)
@@ -132,6 +147,11 @@ public class playerController : MonoBehaviour
                 spriteRenderer.flipX = false; // Balik sprite ke kanan
                 lampu.transform.localPosition = new Vector3(0.53f, 0.707f, lampu.transform.localPosition.z); // Pindahkan lampu ke kanan
             }
+        }
+        else
+        {
+            // Jika crouch, pastikan animasi run juga false
+            animator.SetBool("isRunning", false);
         }
 
         // Cek apakah menyentuh tanah

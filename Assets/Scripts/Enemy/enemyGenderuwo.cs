@@ -32,6 +32,8 @@ public class enemyGenderuwo : MonoBehaviour
     private float heartbeatMaxPitch = 2f; // Pitch maksimum untuk heartbeat
     private float heartbeatDistanceThreshold = 10f; // Jarak maksimum untuk memulai heartbeat
 
+    private bool isGameOver = false; // Tambahkan di deklarasi class
+
     private void Start()
     {   
         AudioManager.Instance.PlayBackgroundMusicWithTransition("Stage1", 0, 2f);
@@ -52,6 +54,13 @@ public class enemyGenderuwo : MonoBehaviour
     {
         Patrol();
         UpdateHeartbeat();
+
+        if (!isGameOver && player.transform.position.y < -5)
+        {
+            // Jika pemain jatuh ke bawah, panggil GameOver hanya sekali
+            isGameOver = true;
+            StartCoroutine(GameOver());
+        }
     }
 
     private void Patrol()
@@ -113,7 +122,7 @@ public class enemyGenderuwo : MonoBehaviour
         }
     }
 
-    IEnumerator GameOver()
+    public IEnumerator GameOver()
     {   
         tombolUlang.SetActive(false);
         gameOverUI.SetActive(true);
