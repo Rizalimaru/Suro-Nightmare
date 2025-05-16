@@ -10,6 +10,8 @@ public class kerisEffect : MonoBehaviour
     public Light2D flashbangLight; // Referensi ke Light2D untuk flashbang
     private playerController playerController; // Referensi ke playerController
 
+    private bool isUseKeris = false;
+
     private Animator anim;
     void Start()
     {
@@ -25,18 +27,26 @@ public class kerisEffect : MonoBehaviour
             return; // Jangan lakukan apa-apa jika pemain sedang berinteraksi
         }
 
-        if (Input.GetKeyDown(stunKey))
+    if (Input.GetKeyDown(stunKey))
         {   
-            if(playerController.isInteracting) 
-            {
-                return; // Jangan lakukan apa-apa jika pemain sedang berinteraksi
-            }
+        // Cek apakah pemain sedang berinteraksi
+        if (playerController.isInteracting)
+        {
+            return; // Jangan lakukan apa-apa jika pemain sedang berinteraksi
+        }
+
+        // Cek apakah tombol stun ditekan dan stun tidak sedang berlangsung
+        if (Input.GetKeyDown(stunKey) && !isUseKeris)
+        {
             StartCoroutine(TriggerStunWithAnimation());
+        }
         }
     }
 
     private IEnumerator TriggerStunWithAnimation()
     {   
+        isUseKeris = true;
+        AudioManager.Instance.PlaySFX("Stage2", 0);
         TriggerStun();
         AudioManager.Instance.StopSFX("PlayerMovement", 0);
         // Nonaktifkan gerakan pemain
@@ -62,6 +72,8 @@ public class kerisEffect : MonoBehaviour
         // Aktifkan kembali gerakan pemain
         anim.SetBool("isWalking", true); // Set animator ke idle
         player.canMove = true;
+
+        isUseKeris = false; 
 
         
     }

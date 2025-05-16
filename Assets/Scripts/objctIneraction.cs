@@ -13,6 +13,8 @@ public class objctIneraction : MonoBehaviour
     public TextMeshProUGUI itemDescription; // Deskripsi item
     public GameObject canvasEToInteract;
 
+    public kerisEffect kerisEffect;
+
     // Dropdown di Inspector untuk memilih item
     public enum ItemType { DapetKafan, DapetKetis, DapetKaca }
     [SerializeField] private ItemType selectedItem;
@@ -54,6 +56,9 @@ public class objctIneraction : MonoBehaviour
                 playerItemData.dapetKafan = true;
                 break;
             case ItemType.DapetKetis:
+                // Aktifkan efek keris biar gg bos 
+
+                kerisEffect.enabled = true;
                 playerItemData.dapetKeris = true;
                 break;
             case ItemType.DapetKaca:

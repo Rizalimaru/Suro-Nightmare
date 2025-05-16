@@ -990,7 +990,6 @@ GameObject:
   - component: {fileID: 302904537}
   - component: {fileID: 302904540}
   - component: {fileID: 302904541}
-  - component: {fileID: 302904542}
   m_Layer: 0
   m_Name: keris
   m_TagString: Untagged
@@ -1135,6 +1134,7 @@ MonoBehaviour:
   itemIcon: {fileID: 699581026}
   itemDescription: {fileID: 1454636842}
   canvasEToInteract: {fileID: 863839008}
+  kerisEffect: {fileID: 1003947148}
   selectedItem: 1
 --- !u!58 &302904541
 CircleCollider2D:
@@ -1171,19 +1171,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10.2
---- !u!114 &302904542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 302904536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d478e62be67333f44b709860d7bb2553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetKerisEffect: {fileID: 1003947148}
 --- !u!1 &304571330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,8 +2294,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[0].soundEffects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6810952314885162743, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
@@ -4365,6 +4357,10 @@ PrefabInstance:
       propertyPath: playerStep
       value: 
       objectReference: {fileID: 1982386992}
+    - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+      propertyPath: jumpSFXPrefab
+      value: 
+      objectReference: {fileID: 7328783108620601442, guid: b6d88c627d7a2104cbf4669a5764dbc4, type: 3}
     - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: playerItemData
       value: 

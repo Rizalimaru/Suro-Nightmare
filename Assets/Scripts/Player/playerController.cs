@@ -146,7 +146,6 @@ public class playerController : MonoBehaviour
             Destroy(jumptsfx, 3f); 
 
 
-            AudioManager.Instance.PlaySFX("PlayerMovement", 4); // Mainkan suara lompat
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJump", true); // Set animator ke lompat (ganti dari trigger ke bool)
         }
