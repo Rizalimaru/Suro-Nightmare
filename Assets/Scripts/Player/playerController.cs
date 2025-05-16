@@ -76,14 +76,15 @@ public class playerController : MonoBehaviour
         }
 
         if (Input.GetKeyUp(KeyCode.F) && isGrounded)
-        {   
-            if(playerItemData.dapetKafan)
-            {   
+        {
+            if (playerItemData.dapetKafan)
+            {
                 vignette.intensity.value = 0f; // Kembalikan intensitas vignette saat tidak crouch
                 animator.SetBool("isCrouch", false); // Set animator ke idle
                 isCrounching = false; // Keluar dari crouch
                 lampu.SetActive(true); // Nyalakan lampu saat tidak crouch
-            }else if(playerItemData.dapetKeris)
+            }
+            else if (playerItemData.dapetKeris)
             {
                 if (Input.GetAxis("Horizontal") != 0)
                 {
@@ -101,10 +102,12 @@ public class playerController : MonoBehaviour
                     isWalkingSoundPlaying = true; // Set flag ke true
                 }
 
-            }else if(playerItemData.dapetKaca)
-            {
-               
             }
+            else if (playerItemData.dapetKaca)
+            {
+
+            }
+
             
         }
 
@@ -134,10 +137,20 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrounching)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.SetTrigger("Jump"); // Set animator ke jump
+            animator.SetBool("isJump", true); // Set animator ke lompat (ganti dari trigger ke bool)
         }
 
-    // Logika untuk suara berjalan
+        // Setelah update posisi, cek status lompat
+        if (!isGrounded)
+        {
+            animator.SetBool("isJump", true); // Selama di udara, isJump tetap true
+        }
+        else
+        {
+            animator.SetBool("isJump", false); // Saat menyentuh tanah, isJump jadi false
+        }
+
+        // Logika untuk suara berjalan
         if (Input.GetAxis("Horizontal") != 0 && !isCrounching)
         {
             animator.SetBool("isWalking", true); // Set animator ke running
@@ -178,6 +191,14 @@ public class playerController : MonoBehaviour
                 isWalkingSoundPlaying = false;
             }
         }
+
+        // Tambahan: Matikan suara berjalan jika player tidak di tanah
+        if (!isGrounded)
+        {
+            AudioManager.Instance.StopSFX("PlayerMovement", 0);
+            isWalkingSoundPlaying = false;
+        }
+
     }
 
 }
