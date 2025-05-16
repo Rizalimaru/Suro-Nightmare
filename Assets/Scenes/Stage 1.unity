@@ -3747,6 +3747,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 985436227044473659, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: BypassEffects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985436227044473659, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2580240765331791825, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3533344
@@ -3791,6 +3799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+      propertyPath: audioSFXGroups.Array.data[0].soundEffects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1628171393}
     - target: {fileID: 7455434529279935359, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
       propertyPath: audioSFXGroups.Array.data[2].soundEffects.Array.data[0]
       value: 
@@ -5835,6 +5847,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1628171393 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6429744168544857937, guid: d03aba3d14033ee4cb0659c2f6074ec6, type: 3}
+  m_PrefabInstance: {fileID: 792768124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632067164
 GameObject:
   m_ObjectHideFlags: 0

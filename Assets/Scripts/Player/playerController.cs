@@ -19,6 +19,10 @@ public class playerController : MonoBehaviour
     public PlayerItemData playerItemData;
     public Volume globalVolume; // Drag Global Volume di Inspector
     private Vignette vignette; // Referensi ke efek vignette
+
+
+    [Header("Audio Player")]   
+    public GameObject jumpSFXPrefab; // Prefab untuk efek suara lompat
     
 
     private Rigidbody2D rb;
@@ -136,6 +140,13 @@ public class playerController : MonoBehaviour
         // Lompat jika di tanah
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrounching)
         {
+            Debug.Log("Memutar SFX lompat");
+            GameObject jumptsfx = Instantiate(jumpSFXPrefab, transform.position, Quaternion.identity);
+
+            Destroy(jumptsfx, 3f); 
+
+
+            AudioManager.Instance.PlaySFX("PlayerMovement", 4); // Mainkan suara lompat
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJump", true); // Set animator ke lompat (ganti dari trigger ke bool)
         }
