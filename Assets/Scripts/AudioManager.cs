@@ -347,6 +347,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlaySFXWithPitch(string groupName, int index, float pitch = 1.0f)
+    {
+        SoundEffectGroup group = System.Array.Find(audioSFXGroups, g => g.groupName == groupName);
+        if (group != null && index >= 0 && index < group.soundEffects.Length)
+        {
+            AudioSource audioSource = group.soundEffects[index];
+            if (audioSource != null)
+            {
+                audioSource.pitch = pitch; // Atur pitch
+                audioSource.Play();
+            }
+        }
+    }
+
     public void SetPlayOnAwakeAndPlay(string groupName, bool state)
     {
         SoundEffectGroup group = System.Array.Find(audioSFXGroups, g => g.groupName == groupName);

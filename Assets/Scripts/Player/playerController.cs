@@ -183,12 +183,17 @@ public class playerController : MonoBehaviour
         {
             animator.SetBool("isWalking", true); // Set animator ke running
 
+            float move = Input.GetAxisRaw("Horizontal");
+
+            bool isRunning = Input.GetKey(KeyCode.LeftShift) && isGrounded && move != 0;
+
             if (!isWalkingSoundPlaying) // Hanya mainkan suara jika belum diputar
             {
                 string currentScene = SceneManager.GetActiveScene().name;
 
                 if (currentScene == "Stage 3")
                 {
+        
                     AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
                 }
                 else

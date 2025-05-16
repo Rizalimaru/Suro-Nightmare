@@ -59,8 +59,11 @@ public class GlassCollector : MonoBehaviour
         var playerMovement = player.GetComponent<playerController>();
         var playerAnim = player.GetComponent<Animator>();
 
+        AudioManager.Instance.StopSFX("PlayerMovement", 3);
+
         // Stop semua animasi player
         playerAnim.SetBool("isWalking", false);
+        playerAnim.SetBool("isRunning", false);
     
         
         playerMovement.enabled = false; // Aktifkan kontrol player saat mengambil kaca
@@ -88,7 +91,7 @@ public class GlassCollector : MonoBehaviour
 
         UpdateProgressText();
 
-        Invoke("HideGlassUI", 2f); // Sembunyikan UI setelah 2 detik
+        StartCoroutine(HideGlassFoundUI()); // Sembunyikan UI setelah 2 detik
 
         if (collected >= totalFragments )
         {
@@ -113,15 +116,23 @@ public class GlassCollector : MonoBehaviour
         Destroy(fragment);
     }
 
-    public void HideGlassUI()
+    public IEnumerator HideGlassFoundUI()
     {
+        yield return new WaitForSeconds(2f);
         if (uiGlass != null)
         {
             uiGlass.SetActive(false);
         }
         var playerMovement = player.GetComponent<playerController>();
-        
+
+        yield return new WaitUntil(() => Input.GetAxis("Horizontal") != 0);
+        AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX default
         playerMovement.enabled = true; // Aktifkan kontrol player saat mengambil kaca
+    }
+
+    public void HideGlassUI()
+    {
+        
     }
 
     public void ShowInteractText(bool show)
