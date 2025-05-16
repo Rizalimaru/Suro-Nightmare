@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class enemyPocong : MonoBehaviour
 {
@@ -11,25 +10,38 @@ public class enemyPocong : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private Collider2D col;
-    private Animator anim; 
+    private Animator anim;
 
     private bool isStunned = false;
+
+    private Stage2GameOver stage2GameOverScript;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
+
+        // Ambil reference ke script Stage2GameOver di scene
+        stage2GameOverScript = FindObjectOfType<Stage2GameOver>();
 
         FacePlayer();
     }
 
     void Update()
     {
+        // Cek game over dari script Stage2GameOver
+        if (stage2GameOverScript != null && stage2GameOverScript.isGameOver)
+        {
+            rb.velocity = Vector2.zero;
+            anim.SetBool("isChasing", false);
+            return;
+        }
+
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -63,7 +75,7 @@ public class enemyPocong : MonoBehaviour
         rb.velocity = direction * moveSpeed;
 
         FacePlayer();
-        SetChasingAnimation(true); // 🔹 Set animasi mengejar
+        SetChasingAnimation(true);
     }
 
     void FacePlayer()
@@ -83,7 +95,7 @@ public class enemyPocong : MonoBehaviour
     void SetChasingAnimation(bool isChasing)
     {
         if (anim != null)
-            anim.SetBool("isChasing", isChasing); // 🔹 Ubah parameter animator
+            anim.SetBool("isChasing", isChasing);
     }
 
     public void Stun(float duration)
@@ -97,7 +109,7 @@ public class enemyPocong : MonoBehaviour
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
-        SetChasingAnimation(false); // 🔹 Set animasi idle saat stun
+        SetChasingAnimation(false);
 
         if (col != null)
             col.enabled = false;
@@ -117,22 +129,6 @@ public class enemyPocong : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         isStunned = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 
     void OnDrawGizmosSelected()

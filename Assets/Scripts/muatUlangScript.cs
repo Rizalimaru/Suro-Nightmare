@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class muatUlangScript : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class muatUlangScript : MonoBehaviour
     public GameObject player;
     public GameObject UIGameOver;
 
-
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(muatUlang());
+    }
 
     public void muatUlangGame()
     {

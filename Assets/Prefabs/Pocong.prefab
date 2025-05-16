@@ -165,6 +165,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   chaseRange: 10
+  groundCheckPoint: {fileID: 0}
+  groundCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &6710817488842188792
 Animator:
   serializedVersion: 5
