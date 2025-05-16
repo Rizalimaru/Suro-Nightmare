@@ -48887,6 +48887,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1979245495802089953, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979245495802089953, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.24047919
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.76181865
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.7146279
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -243
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -117.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182752038165448805, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.2999878
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512162970215024744, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512162970215024744, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6714579220799445152, guid: c520edd62a63ce84989416aba12618fb, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -48972,12 +49020,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.46843752
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.69062793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.6415535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -680
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -836.9
+      value: -335.90002
       objectReference: {fileID: 0}
     - target: {fileID: 8809620583751374286, guid: c520edd62a63ce84989416aba12618fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 180.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
