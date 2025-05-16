@@ -196,6 +196,7 @@ public class playerController : MonoBehaviour
         if (!isGrounded)
         {
             AudioManager.Instance.StopSFX("PlayerMovement", 0);
+            AudioManager.Instance.StopSFX("PlayerMovement", 4);
             isWalkingSoundPlaying = false;
         }
 
