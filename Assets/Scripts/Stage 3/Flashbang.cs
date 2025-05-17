@@ -97,7 +97,7 @@ public class Flashbang : MonoBehaviour
         
         yield return new WaitForSeconds(3f);
         whiteScreen.SetActive(true);
-        sceneController.LoadScene("EndingBro");
+        sceneController.LoadScene("Ending");
         
     }
 }
