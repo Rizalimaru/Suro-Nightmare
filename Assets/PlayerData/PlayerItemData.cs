@@ -9,4 +9,5 @@ public class PlayerItemData : ScriptableObject
     public bool dapetKafan;
     public bool dapetKeris;
     public bool dapetKaca;
+    public bool isTutorialDone;
 }

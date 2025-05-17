@@ -11,6 +11,7 @@ public class UIPause : MonoBehaviour
     public playerController playerController;
 
     public Animator playerAnim;
+    public PlayerItemData playerItemData;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,7 @@ public class UIPause : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        playerItemData.isTutorialDone = false;
         playerController.enabled = true;
         uipause.SetActive(false);
         Time.timeScale = 1f;
