@@ -27,7 +27,7 @@ public class playerController : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool isGrounded;
-    private bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
+    public bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
     public float runMultiplier = 1.5f; // Faktor pengali kecepatan lari
 
@@ -178,26 +178,35 @@ public class playerController : MonoBehaviour
             animator.SetBool("isJump", false); // Saat menyentuh tanah, isJump jadi false
         }
 
-        // Logika untuk suara berjalan
         if (Input.GetAxis("Horizontal") != 0 && !isCrounching)
         {
-            animator.SetBool("isWalking", true); // Set animator ke running
+            animator.SetBool("isWalking", true); // Set animator ke berjalan
 
             float move = Input.GetAxisRaw("Horizontal");
 
             bool isRunning = Input.GetKey(KeyCode.LeftShift) && isGrounded && move != 0;
 
-            if (!isWalkingSoundPlaying) // Hanya mainkan suara jika belum diputar
-            {
-                string currentScene = SceneManager.GetActiveScene().name;
+            string currentScene = SceneManager.GetActiveScene().name;
 
+            if (!isWalkingSoundPlaying || (move < 0 && spriteRenderer.flipX == false) || (move > 0 && spriteRenderer.flipX == true))
+            {
+                // Hentikan suara sebelumnya
                 if (currentScene == "Stage 3")
                 {
-        
+                    AudioManager.Instance.StopSFX("PlayerMovement", 3);
+                }
+                else
+                {
+                    AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                }
+
+                // Putar suara berjalan dengan arah baru
+                if (currentScene == "Stage 3")
+                {
                     AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
                 }
                 else
-                {   
+                {
                     AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
                 }
 
