@@ -549,7 +549,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1693339584}
         m_TargetAssemblyTypeName: muatUlangScript, Assembly-CSharp
-        m_MethodName: muatUlangGame
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
