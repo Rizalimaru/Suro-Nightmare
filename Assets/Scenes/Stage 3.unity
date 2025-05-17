@@ -1032,6 +1032,7 @@ MonoBehaviour:
   - {fileID: 1829327728}
   lemari2d: {fileID: 399326448}
   lampu2d: {fileID: 125642775}
+  uipause: {fileID: 758451830}
 --- !u!61 &19207983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10815,6 +10816,7 @@ MonoBehaviour:
   - {fileID: 1829327728}
   lemari2d: {fileID: 1339955334}
   lampu2d: {fileID: 125642775}
+  uipause: {fileID: 758451830}
 --- !u!61 &413533938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11273,6 +11275,7 @@ MonoBehaviour:
   checkPoint: {fileID: 853754325}
   player: {fileID: 771423455}
   UIGameOver: {fileID: 443712261}
+  uipause: {fileID: 758451830}
 --- !u!95 &443712263
 Animator:
   serializedVersion: 5
@@ -11977,6 +11980,11 @@ Transform:
   - {fileID: 888934288}
   m_Father: {fileID: 1165461878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &499925035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 832009478647269271, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+  m_PrefabInstance: {fileID: 923273018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &500711316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15488,6 +15496,7 @@ MonoBehaviour:
   - {fileID: 1829327728}
   lemari2d: {fileID: 380011210}
   lampu2d: {fileID: 125642775}
+  uipause: {fileID: 758451830}
 --- !u!61 &635505571
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17970,6 +17979,7 @@ MonoBehaviour:
   - {fileID: 1829327728}
   lemari2d: {fileID: 662910805}
   lampu2d: {fileID: 125642775}
+  uipause: {fileID: 758451830}
 --- !u!61 &701144838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18758,6 +18768,7 @@ GameObject:
   - component: {fileID: 758451827}
   - component: {fileID: 758451828}
   - component: {fileID: 758451829}
+  - component: {fileID: 758451830}
   m_Layer: 0
   m_Name: Stage3Manager
   m_TagString: Untagged
@@ -18820,6 +18831,22 @@ MonoBehaviour:
   musuhTerlihat: {fileID: 1293134467}
   glassTextValueKaca: 
   uiGlass: {fileID: 1001175083}
+  uipause: {fileID: 758451830}
+--- !u!114 &758451830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758451825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88d6cca5504f2e4681d7f7a3b9c58b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uipause: {fileID: 499925035}
+  playerController: {fileID: 771423456}
+  playerAnim: {fileID: 771423462}
 --- !u!1 &771423455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6271868402769968, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
@@ -18849,6 +18876,11 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771423455}
   m_Enabled: 1
+--- !u!95 &771423462 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7247628527958813635, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
+  m_PrefabInstance: {fileID: 704446522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &785567335
 GameObject:
   m_ObjectHideFlags: 0
@@ -19503,6 +19535,7 @@ MonoBehaviour:
   - {fileID: 1829327728}
   lemari2d: {fileID: 2138145092}
   lampu2d: {fileID: 125642775}
+  uipause: {fileID: 758451830}
 --- !u!61 &797360421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22657,6 +22690,131 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!1001 &923273018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 832009478647269271, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_Name
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 1107564723207198951, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 758451830}
+    - target: {fileID: 1107564723207198951, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316877080938318673, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 758451830}
+    - target: {fileID: 2316877080938318673, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371924747601313241, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032037603847197674, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.84705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149763322046471486, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 758451830}
+    - target: {fileID: 7149763322046471486, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMainMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a65cd16358dd81d4e9b69aa238bbc52c, type: 3}
 --- !u!1 &924411672
 GameObject:
   m_ObjectHideFlags: 0
@@ -23473,6 +23631,7 @@ MonoBehaviour:
   interactionText: {fileID: 1838715073}
   transitionCanvas: {fileID: 2122806240}
   detectTeleportStage3: {fileID: 758451828}
+  uipause: {fileID: 758451830}
 --- !u!61 &954350651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26605,6 +26764,7 @@ MonoBehaviour:
   interactionText: {fileID: 519034249}
   transitionCanvas: {fileID: 2122806240}
   detectTeleportStage3: {fileID: 758451828}
+  uipause: {fileID: 758451830}
 --- !u!61 &1147989806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36069,6 +36229,7 @@ MonoBehaviour:
   interactionText: {fileID: 417239572}
   transitionCanvas: {fileID: 2122806240}
   detectTeleportStage3: {fileID: 758451828}
+  uipause: {fileID: 758451830}
 --- !u!61 &1602588801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39094,6 +39255,7 @@ MonoBehaviour:
   interactionText: {fileID: 2129047203}
   transitionCanvas: {fileID: 2122806240}
   detectTeleportStage3: {fileID: 758451828}
+  uipause: {fileID: 758451830}
 --- !u!1 &1698474363
 GameObject:
   m_ObjectHideFlags: 0
@@ -42206,6 +42368,7 @@ MonoBehaviour:
   myCollider: {fileID: 1829327728}
   lemari: {fileID: 0}
   teleportStage3_1: {fileID: 1695330520}
+  uipause: {fileID: 758451830}
 --- !u!114 &1829327732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45035,6 +45198,7 @@ MonoBehaviour:
   myCollider: {fileID: 1958634541}
   lemari: {fileID: 0}
   teleportStage3_1: {fileID: 1695330520}
+  uipause: {fileID: 758451830}
 --- !u!4 &1958634538
 Transform:
   m_ObjectHideFlags: 0
@@ -50059,3 +50223,4 @@ SceneRoots:
   - {fileID: 1049222182}
   - {fileID: 250124621}
   - {fileID: 443712267}
+  - {fileID: 923273018}

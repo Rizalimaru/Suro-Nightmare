@@ -14,6 +14,8 @@ public class enemyPocong : MonoBehaviour
 
     private bool isStunned = false;
 
+    public UIPause uipause; // Referensi ke UI Pause
+
     private Stage2GameOver stage2GameOverScript;
 
     void Start()

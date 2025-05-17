@@ -18,6 +18,7 @@ public class SembunyiLemari : MonoBehaviour
     public GameObject lemari2d;
 
     public GameObject lampu2d;
+    public UIPause uipause;
 
     // mendeteksi biar tidak bisa di spam
     private bool isHidingCoroutineRunning = false;
@@ -48,6 +49,7 @@ public class SembunyiLemari : MonoBehaviour
 
     private IEnumerator HandleHiding(bool hide)
     {
+        uipause.enabled = false;
         var rb = player.GetComponent<Rigidbody2D>();
         var controller = player.GetComponent<playerController>();
 
@@ -78,6 +80,7 @@ public class SembunyiLemari : MonoBehaviour
         controller.enabled = !hide;
 
         isHidingCoroutineRunning = false;
+        uipause.enabled = true;
         lemari2d.SetActive(false); // Sembunyikan lemari 2D setelah jeda
          AudioManager.Instance.PlaySFX("Stage3", 3); //tutup lemar
 

@@ -9,6 +9,8 @@ public class muatUlangScript : MonoBehaviour
     public GameObject player;
     public GameObject UIGameOver;
 
+    public UIPause uipause;
+
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -24,10 +26,12 @@ public class muatUlangScript : MonoBehaviour
 
     IEnumerator muatUlang()
     {
+        
         player.transform.position =  checkPoint.transform.position;
         AudioListener.volume = 1f;
         ;
         yield return new WaitForSeconds(0.5f);
+        uipause.enabled = true;
         UIGameOver.SetActive(false);
 
     }

@@ -11,6 +11,8 @@ public class enemyGenderuwo : MonoBehaviour
     public float leftPatrolLimit; // Batas kiri patrol
     public float rightPatrolLimit; // Batas kanan patrol
 
+    public UIPause uipause; // Referensi ke UI Pause
+
     private Rigidbody2D rb;
     private bool isFacingRight = true;
 
@@ -124,6 +126,7 @@ public class enemyGenderuwo : MonoBehaviour
 
     public IEnumerator GameOver()
     {   
+        uipause.enabled = false;
         tombolUlang.SetActive(false);
         gameOverUI.SetActive(true);
         gameOverAnimator.SetTrigger("gameOver");

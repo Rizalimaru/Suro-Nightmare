@@ -10,7 +10,7 @@ public class Stage2GameOver : MonoBehaviour
     public Animator gameOverAnimator; // Referensi ke Animator untuk Game Over
     public playerController playerController; // Referensi ke skrip playerController
     public GameObject tombolUlang; // Referensi ke tombol Ulang
-
+    public UIPause uipause; // Referensi ke UI Pause
     public bool isGameOver = false; // Cegah pemanggilan GameOver berkali-kali
 
     // Start is called before the first frame update
@@ -29,6 +29,7 @@ public class Stage2GameOver : MonoBehaviour
     {
         if (!isGameOver && collision.collider.CompareTag("Pocong"))
         {
+            
             isGameOver = true;
             StartCoroutine(GameOver());
         }
@@ -36,12 +37,14 @@ public class Stage2GameOver : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        uipause.enabled = false;
         tombolUlang.SetActive(false);
         gameOverUI.SetActive(true);
         gameOverAnimator.SetTrigger("gameOver");
         yield return new WaitForSeconds(2f); // Tunggu 2 detik sebelum menampilkan Game Over
         tombolUlang.SetActive(true);
         AudioListener.volume = 0;
-        isGameOver = false;   
+        isGameOver = false;
+        uipause.enabled = true;   
     }
 }

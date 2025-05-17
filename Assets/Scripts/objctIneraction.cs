@@ -32,6 +32,10 @@ public class objctIneraction : MonoBehaviour
         // Periksa input E hanya jika pemain berada di dalam trigger
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {   
+            if(Time.timeScale == 0)
+            {
+                return;
+            }
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false; // Menyembunyikan sprite objek ini
             canvasEToInteract.SetActive(false); // Menyembunyikan canvas interaksi

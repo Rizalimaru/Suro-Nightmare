@@ -31,6 +31,8 @@ public class KuntilanakMerahPatrol : MonoBehaviour
 
     public teleportStage3_1 teleportStage3_1;
 
+    public UIPause uipause; // Referensi ke UI Pause
+
     void Start()
     {
         instance = this;
@@ -115,6 +117,7 @@ public class KuntilanakMerahPatrol : MonoBehaviour
 
     public IEnumerator GameOver()
     {   
+        uipause.enabled = false;
         tombolUlang.SetActive(false);
         gameOverUI.SetActive(true);
         gameOverAnimator.SetTrigger("gameOver");

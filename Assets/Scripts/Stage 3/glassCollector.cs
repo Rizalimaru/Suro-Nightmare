@@ -37,6 +37,7 @@ public class GlassCollector : MonoBehaviour
     public string glassTextValueKaca ; // Teks yang akan ditampilkan saat kaca ditemukan
 
     public GameObject uiGlass;
+    public UIPause uipause;
 
     void Start()
     {
@@ -95,6 +96,7 @@ public class GlassCollector : MonoBehaviour
 
         if (collected >= totalFragments )
         {
+            uipause.enabled = false;
             uiGlass.SetActive(false);
 
             musuhTerlihat.SetActive(false);
@@ -118,6 +120,7 @@ public class GlassCollector : MonoBehaviour
 
     public IEnumerator HideGlassFoundUI()
     {
+        uipause.enabled = false;
         yield return new WaitForSeconds(2f);
         if (uiGlass != null)
         {
@@ -127,7 +130,8 @@ public class GlassCollector : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetAxis("Horizontal") != 0);
         AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX default
-        playerMovement.enabled = true; // Aktifkan kontrol player saat mengambil kaca
+        playerMovement.enabled = true;
+        uipause.enabled = true; // Aktifkan kontrol player saat mengambil kaca
     }
 
     public void HideGlassUI()

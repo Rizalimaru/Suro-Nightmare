@@ -15,6 +15,8 @@ public class teleportStage3_1 : MonoBehaviour
 
     private bool isTeleporting = false;
 
+    public UIPause uipause; // Referensi ke UI Pause
+
     void Start()
     {
         interactionText.SetActive(false);
@@ -37,6 +39,7 @@ public class teleportStage3_1 : MonoBehaviour
 
     private IEnumerator TeleportWithTransition()
     {
+        uipause.enabled = false;
         // Aktifkan canvas dan mulai transisi menghitam
         if (transitionCanvas != null)
         {
@@ -57,12 +60,13 @@ public class teleportStage3_1 : MonoBehaviour
             transitionCanvas.gameObject.SetActive(false);
         }
 
-        
+
         interactionText.SetActive(false);
         playerInRange = false;
 
         yield return new WaitForSeconds(0.3f);
         detectTeleportStage3.isTeleporting = false;
+        uipause.enabled = true;
     }
 
     public void teleportTransition()

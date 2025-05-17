@@ -22,6 +22,8 @@ public class GlassFragment : MonoBehaviour
 
     public GameObject uiGlassFound;
 
+     // Referensi ke UI Pause
+
     void Start()
     {
         manager = FindObjectOfType<GlassCollector>();

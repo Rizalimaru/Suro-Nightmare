@@ -26,6 +26,10 @@ public class objectInteraction : MonoBehaviour
     {
         if(isInteracting)
         {
+            if(Time.timeScale == 0)
+            {
+                return;
+            }
             if (Input.GetKey(KeyCode.E))
             {
                 barProgress.fillAmount += Time.deltaTime / 7; // Mengisi progress bar;
