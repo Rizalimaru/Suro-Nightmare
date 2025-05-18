@@ -8800,7 +8800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3479842459767915309, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4290736033257024698, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: globalVolume
@@ -8808,7 +8808,7 @@ PrefabInstance:
       objectReference: {fileID: 1646879861}
     - target: {fileID: 5683215857353664036, guid: 4b665ea2c6220e94c8b8b623e870cfbb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
