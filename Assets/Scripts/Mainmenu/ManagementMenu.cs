@@ -103,6 +103,7 @@ public class ManagementMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         if (isButtonPressed) return; // Cegah spamming tombol
         isButtonPressed = true;
 

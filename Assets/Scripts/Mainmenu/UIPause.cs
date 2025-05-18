@@ -81,6 +81,7 @@ public class UIPause : MonoBehaviour
 
     public void ResumeGame()
     {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         float move = Input.GetAxisRaw("Horizontal");
         if (move != 0 && playerController.isGrounded && !playerController.isCrounching)
         {
@@ -117,6 +118,7 @@ public class UIPause : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         restartGame = true;
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage1", 1f);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 1f);
@@ -132,6 +134,7 @@ public class UIPause : MonoBehaviour
     // Restart scene ini 
     public void RestartGame()
     {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         restartGame = true;
         playerController.enabled = true;
         uipause.SetActive(false);
