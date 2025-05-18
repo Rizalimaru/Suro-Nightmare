@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour
     public bool isGrounded;
     public bool isWalkingSoundPlaying = false; // Variabel untuk melacak status suara berjalan
 
+    private bool isRunningSoundPlaying = false;
     public float runMultiplier = 1.5f; // Faktor pengali kecepatan lari
 
     void Start()
@@ -188,9 +189,9 @@ public class playerController : MonoBehaviour
 
             string currentScene = SceneManager.GetActiveScene().name;
 
-            if (!isWalkingSoundPlaying || (move < 0 && spriteRenderer.flipX == false) || (move > 0 && spriteRenderer.flipX == true))
+            // Hentikan suara sebelumnya jika arah berubah
+            if ((move < 0 && spriteRenderer.flipX == false) || (move > 0 && spriteRenderer.flipX == true))
             {
-                // Hentikan suara sebelumnya
                 if (currentScene == "Stage 3")
                 {
                     AudioManager.Instance.StopSFX("PlayerMovement", 3);
@@ -200,17 +201,42 @@ public class playerController : MonoBehaviour
                     AudioManager.Instance.StopSFX("PlayerMovement", 0);
                 }
 
-                // Putar suara berjalan dengan arah baru
+                isRunningSoundPlaying = false;
+                isWalkingSoundPlaying = false; // Reset flag untuk memutar ulang suara
+            }
+
+            // Putar suara berjalan atau berlari berdasarkan kondisi
+            if (isRunning)
+            {
+                if (!isRunningSoundPlaying)
+                { // Reset flag untuk memutar ulang suara
+                    Debug.Log("Memutar SFX berlari");
+                    if (currentScene == "Stage 3")
+                    {
+                        AudioManager.Instance.PlaySFXWithPitch("PlayerMovement", 3, 3f); // Play SFX untuk Stage3 dengan pitch lebih tinggi saat berlari
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlaySFXWithPitch("PlayerMovement", 0, 1.8f); // Play SFX default dengan pitch lebih tinggi saat berlari
+                    }
+                    isRunningSoundPlaying = true;
+                    isWalkingSoundPlaying = false; 
+                }
+            }
+            else if (!isWalkingSoundPlaying) // Putar suara berjalan hanya jika belum diputar
+            {
+                Debug.Log("Memutar SFX jalan");
                 if (currentScene == "Stage 3")
                 {
-                    AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
+                    AudioManager.Instance.PlaySFXWithPitch("PlayerMovement", 3, 2.5f); // Play SFX untuk Stage3 dengan pitch normal saat berjalan
                 }
                 else
                 {
-                    AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
+                    AudioManager.Instance.PlaySFXWithPitch("PlayerMovement", 0, 1.2f); // Play SFX default dengan pitch normal saat berjalan
                 }
 
-                isWalkingSoundPlaying = true;
+                isRunningSoundPlaying = false;
+                isWalkingSoundPlaying = true; // Tandai bahwa suara berjalan sedang diputar
             }
         }
         else
@@ -231,6 +257,7 @@ public class playerController : MonoBehaviour
                 }
 
                 isWalkingSoundPlaying = false;
+                isRunningSoundPlaying = false;
             }
         }
 
@@ -240,6 +267,7 @@ public class playerController : MonoBehaviour
             AudioManager.Instance.StopSFX("PlayerMovement", 0);
             AudioManager.Instance.PlaySFX("PlayerMovement", 4);
             isWalkingSoundPlaying = false;
+            isRunningSoundPlaying = false;
         }
 
     }

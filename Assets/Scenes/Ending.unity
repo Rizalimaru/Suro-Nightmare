@@ -408,7 +408,7 @@ RectTransform:
   m_GameObject: {fileID: 384354706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2094362, y: 2.2094362, z: 2.2094362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2005609040}
@@ -416,8 +416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.075, y: 0.26900002}
   m_AnchorMax: {x: 0.29900002, y: 0.344}
-  m_AnchoredPosition: {x: -2.5725098, y: 1.2721405}
-  m_SizeDelta: {x: -236.505, y: -47.54258}
+  m_AnchoredPosition: {x: -0.63256836, y: 0.38226318}
+  m_SizeDelta: {x: -1.3049622, y: -3.1115036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &384354708
 MonoBehaviour:
@@ -492,8 +492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: 0.00048828125}
-  m_SizeDelta: {x: 0, y: -170.18}
+  m_AnchoredPosition: {x: -0.5, y: -0.0008544922}
+  m_SizeDelta: {x: 0, y: -143.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &505003655
 Animator:
@@ -1014,7 +1014,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2120696028}
+  - {fileID: 1163025822}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1046,6 +1046,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!21 &1163025822
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/GlitchShader
+  m_Shader: {fileID: 4800000, guid: acee6a792c656ed4f9582087b0f34482, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DispTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorIntensity: 1
+    - _Intensity: 1
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1 &1190224358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,8 +1676,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.011657715, y: -0.0005493164}
-  m_SizeDelta: {x: -276, y: -154.90997}
+  m_AnchoredPosition: {x: -0.011657715, y: 0.0009765625}
+  m_SizeDelta: {x: -276, y: -130.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1542117288
 GameObject:
@@ -1932,8 +1969,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.075, y: 0.06631472}
   m_AnchorMax: {x: 0.9215106, y: 0.26900002}
-  m_AnchoredPosition: {x: 2.963684, y: -0.9633789}
-  m_SizeDelta: {x: -886.7526, y: -116.74299}
+  m_AnchoredPosition: {x: 2.963684, y: -9.217163}
+  m_SizeDelta: {x: -886.7526, y: -109.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003541272
 MonoBehaviour:
@@ -2057,8 +2094,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2107,43 +2144,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005609039}
   m_CullTransparentMesh: 1
---- !u!21 &2120696028
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/GlitchShader
-  m_Shader: {fileID: 4800000, guid: acee6a792c656ed4f9582087b0f34482, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DispTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorIntensity: 1
-    - _Intensity: 1
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &175861259615243670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2276,8 +2276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.507019, y: 0.0010986328}
-  m_SizeDelta: {x: -1059.56, y: -686.07}
+  m_AnchoredPosition: {x: 4.507019, y: -0.00087738}
+  m_SizeDelta: {x: -1059.56, y: -686.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2269818668813560892
 MonoBehaviour:
@@ -2490,10 +2490,10 @@ RectTransform:
   - {fileID: 7586058132514396945}
   m_Father: {fileID: 4017531197682449983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.40115076, y: 0.89500004}
-  m_AnchorMax: {x: 0.60054785, y: 0.97700006}
-  m_AnchoredPosition: {x: 0.49829102, y: -0.37573242}
-  m_SizeDelta: {x: -0.74954224, y: -4.271515}
+  m_AnchorMin: {x: 0.39380372, y: 0.86700004}
+  m_AnchorMax: {x: 0.61028, y: 1}
+  m_AnchoredPosition: {x: -2.001709, y: -13.714111}
+  m_SizeDelta: {x: -27.749512, y: -15.594696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6717186086564474100
 GameObject:
@@ -2618,7 +2618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.50001526, y: 0}
+  m_AnchoredPosition: {x: 0.5, y: 0}
   m_SizeDelta: {x: 0.35998535, y: -5.055599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7653879664836872007
@@ -2669,8 +2669,8 @@ MonoBehaviour:
   - Damar
   - Damar
   dialogLines:
-  - '"Hahh!!"'
-  - '"Oh ternyata semua cuma mimpi"'
+  - Hahh!!
+  - Oh ternyata semua cuma mimpi
   typingSpeed: 0.03
   nextGameObject: {fileID: 582816472082358344}
   hitamtransisi: {fileID: 505003653}

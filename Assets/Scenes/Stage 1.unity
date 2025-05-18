@@ -4789,6 +4789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88d6cca5504f2e4681d7f7a3b9c58b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hideUI: {fileID: 1182642129955572547}
   uipause: {fileID: 1804426628}
   playerController: {fileID: 2124034300}
   playerAnim: {fileID: 2124034306}
