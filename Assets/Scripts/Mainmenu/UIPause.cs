@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement; // Import SceneManagement untuk memuat scene
 
 public class UIPause : MonoBehaviour
 {
-
+    public GameObject hideUI;
     public GameObject uipause;
 
     public playerController playerController;
 
     public Animator playerAnim;
     public PlayerItemData playerItemData;
+
+    private bool restartGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class UIPause : MonoBehaviour
     void Update()
     {
         // Ketika press esc akan pause
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && restartGame == false)
         {
             if (uipause.activeSelf)
             {
@@ -31,6 +33,7 @@ public class UIPause : MonoBehaviour
                 playerAnim.SetBool("isInteract", false);
 
                 uipause.SetActive(false);
+                hideUI.SetActive(true);
                 Time.timeScale = 1f;
                 
                 float move = Input.GetAxisRaw("Horizontal");
@@ -69,6 +72,7 @@ public class UIPause : MonoBehaviour
                 AudioManager.Instance.StopSFX("PlayerMovement", 4);
                 playerController.enabled = false;
                 uipause.SetActive(true);
+                hideUI.SetActive(false);
                 Time.timeScale = 0f;
             }
         }
@@ -107,11 +111,13 @@ public class UIPause : MonoBehaviour
         }
         playerController.enabled = true;
         uipause.SetActive(false);
+        hideUI.SetActive(true);
         Time.timeScale = 1f;
     }
 
     public void BackToMainMenu()
     {
+        restartGame = true;
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage1", 1f);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 1f);
         AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3", 1f);
@@ -126,6 +132,7 @@ public class UIPause : MonoBehaviour
     // Restart scene ini 
     public void RestartGame()
     {
+        restartGame = true;
         playerController.enabled = true;
         uipause.SetActive(false);
         Time.timeScale = 1f;
