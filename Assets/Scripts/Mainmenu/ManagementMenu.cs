@@ -10,11 +10,14 @@ public class ManagementMenu : MonoBehaviour
 
     public SceneController sceneController; // Referensi ke SceneController
 
+    private bool isStageActive = false; // Flag untuk mengecek apakah stage aktif
+
     void Start()
     {
         panels[0].SetActive(true); // Menu utama aktif
         panels[1].SetActive(false); // Options tidak aktif
         panels[2].SetActive(false); // Kredit tidak aktif
+        panels[3].SetActive(false); // Pilih are
 
         AudioManager.Instance.PlayBackgroundMusicWithTransition2("Mainmenu", 0,2f, 0.7f); // Memutar musik latar menu utama
     }
@@ -22,7 +25,7 @@ public class ManagementMenu : MonoBehaviour
     void Update()
     {
         // Kalau panel indeks 1 atau 2 aktif, jika escape ditekan, kembali ke menu utama
-        if (panels[1].activeSelf || panels[2].activeSelf)
+        if (panels[1].activeSelf || panels[2].activeSelf || panels[3].activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -53,6 +56,25 @@ public class ManagementMenu : MonoBehaviour
         StartCoroutine(ResetButtonFlag());
     }
 
+    public void OpenScene(string namescene){
+        if (isStageActive) return; // Cegah spamming tombol
+        isStageActive = true;
+        // Load scene berikutnya
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Mainmenu", 1f);
+        sceneController.LoadScene(namescene);
+
+        StartCoroutine(ResetStage());
+    }
+
+    private IEnumerator ResetStage()
+    {
+        yield return new WaitForSeconds(0.5f); // Sesuaikan durasi ini jika diperlukan
+        isStageActive = true; // Reset flag setelah durasi tertentu
+    }
+
+  
+
     public void OpenKredit()
     {
         if (isButtonPressed) return; // Cegah spamming tombol
@@ -62,10 +84,21 @@ public class ManagementMenu : MonoBehaviour
         StartCoroutine(ResetButtonFlag());
     }
 
+    public void OpenPilihArea()
+    {
+        if (isButtonPressed) return; // Cegah spamming tombol
+        isButtonPressed = true;
+
+        StartCoroutine(PlaySoundAndOpenPanel(3));
+        StartCoroutine(ResetButtonFlag());
+    }
+
     public void BackToMenu()
     {
+        AudioManager.Instance.PlaySFX("Mainmenu", 0);
         panels[1].SetActive(false);
         panels[2].SetActive(false);
+        panels[3].SetActive(false);
     }
 
     public void ExitGame()
@@ -85,6 +118,7 @@ public class ManagementMenu : MonoBehaviour
         yield return new WaitForSeconds(0.2f); // Tunggu durasi sound (sesuaikan durasi ini)
         panels[1].SetActive(panelIndex == 1);
         panels[2].SetActive(panelIndex == 2);
+        panels[3].SetActive(panelIndex == 3);
     }
 
     private IEnumerator ResetButtonFlag()

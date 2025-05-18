@@ -27,14 +27,46 @@ public class UIPause : MonoBehaviour
         {
             if (uipause.activeSelf)
             {
-                playerController.enabled =true;
+                playerController.enabled = true;
                 playerAnim.SetBool("isInteract", false);
 
                 uipause.SetActive(false);
                 Time.timeScale = 1f;
+                
+                float move = Input.GetAxisRaw("Horizontal");
+                if (move != 0 && playerController.isGrounded && !playerController.isCrounching)
+                {
+                    string currentScene = SceneManager.GetActiveScene().name;
+
+                    // Hentikan suara sebelumnya untuk memastikan suara baru diputar
+                    AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                    AudioManager.Instance.StopSFX("PlayerMovement", 3);
+
+                    // Putar suara berjalan berdasarkan arah baru
+                    if (currentScene == "Stage 3")
+                    {
+                        AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
+                    }
+
+                    playerController.isWalkingSoundPlaying = true; // Tandai bahwa suara berjalan sedang diputar
+                }
+            else
+            {
+                // Hentikan suara jika pemain tidak bergerak
+                AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                AudioManager.Instance.StopSFX("PlayerMovement", 3);
+                playerController.isWalkingSoundPlaying = false;
+            }
             }
             else
             {
+                AudioManager.Instance.StopSFX("PlayerMovement", 0);
+                AudioManager.Instance.StopSFX("PlayerMovement", 3);
+                AudioManager.Instance.StopSFX("PlayerMovement", 4);
                 playerController.enabled = false;
                 uipause.SetActive(true);
                 Time.timeScale = 0f;
@@ -45,6 +77,34 @@ public class UIPause : MonoBehaviour
 
     public void ResumeGame()
     {
+        float move = Input.GetAxisRaw("Horizontal");
+        if (move != 0 && playerController.isGrounded && !playerController.isCrounching)
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            // Hentikan suara sebelumnya untuk memastikan suara baru diputar
+            AudioManager.Instance.StopSFX("PlayerMovement", 0);
+            AudioManager.Instance.StopSFX("PlayerMovement", 3);
+
+            // Putar suara berjalan berdasarkan arah baru
+            if (currentScene == "Stage 3")
+            {
+                AudioManager.Instance.PlaySFX("PlayerMovement", 3); // Play SFX untuk Stage3
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX("PlayerMovement", 0); // Play SFX default
+            }
+
+            playerController.isWalkingSoundPlaying = true; // Tandai bahwa suara berjalan sedang diputar
+        }
+        else
+        {
+            // Hentikan suara jika pemain tidak bergerak
+            AudioManager.Instance.StopSFX("PlayerMovement", 0);
+            AudioManager.Instance.StopSFX("PlayerMovement", 3);
+            playerController.isWalkingSoundPlaying = false;
+        }
         playerController.enabled = true;
         uipause.SetActive(false);
         Time.timeScale = 1f;
@@ -52,6 +112,9 @@ public class UIPause : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage1", 1f);
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage2", 1f);
+        AudioManager.Instance.StopBackgroundMusicWithTransition("Stage3", 1f);
         playerItemData.isTutorialDone = false;
         playerController.enabled = true;
         uipause.SetActive(false);

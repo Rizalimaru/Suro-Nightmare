@@ -132,15 +132,13 @@ public class SembunyiLemari : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Jangan ubah canHide jika pemain sedang bersembunyi
-            if (!isHiding)
-            {
+  
                 canHide = false;
 
                 if (hideTextUI != null)
                     hideTextUI.gameObject.SetActive(false);
-            }
         }
-}
+    }
 
     void UpdateHideText()
     {
